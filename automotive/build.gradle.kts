@@ -1,6 +1,12 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+}
+
+val localProps = Properties().apply {
+    load(rootProject.file("local.properties").inputStream())
 }
 
 android {
@@ -15,6 +21,14 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "PLEOS_PROJECT_ID", "\"${localProps["PLEOS_PROJECT_ID"]}\"")
+        buildConfigField("String", "PLEOS_CLIENT_ID", "\"${localProps["PLEOS_CLIENT_ID"]}\"")
+        buildConfigField("String", "PLEOS_CLIENT_SECRET", "\"${localProps["PLEOS_CLIENT_SECRET"]}\"")
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {

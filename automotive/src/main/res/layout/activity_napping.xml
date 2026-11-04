@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0E1A">
+
+    <!-- 상단 타이틀 -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PLEOS  NAPPING"
+        android:textColor="#4A9EFF"
+        android:textSize="16sp"
+        android:letterSpacing="0.3"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- 타이머 (중앙 크게) -->
+    <TextView
+        android:id="@+id/tvTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20:00"
+        android:textColor="#FFFFFF"
+        android:textSize="96sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- 상태 텍스트 -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="냅핑 모드 진행 중..."
+        android:textColor="#7A8FAA"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTimer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- 하단 단계 바 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 수면 구간 17분 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="17"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#4A9EFF"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수면  0–17분"
+                android:textColor="#4A9EFF"
+                android:textSize="11sp"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+        <!-- 각성 1 구간 2분 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#FFB347"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="각성1"
+                android:textColor="#FFB347"
+                android:textSize="11sp"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+        <!-- 기상 구간 1분 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#FF6B6B"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기상"
+                android:textColor="#FF6B6B"
+                android:textSize="11sp"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

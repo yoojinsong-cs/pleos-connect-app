@@ -13,7 +13,7 @@ class NappingSettingActivity : FragmentActivity() {
         setContentView(R.layout.activity_napping_setting)
 
         findViewById<TextView>(R.id.tvBack).setOnClickListener { finish() }
-        findViewById<Button>(R.id.btnClose).setOnClickListener {
+        findViewById<TextView>(R.id.btnClose).setOnClickListener {
             finishAffinity()
             System.exit(0)
         }

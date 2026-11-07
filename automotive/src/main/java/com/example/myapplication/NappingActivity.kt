@@ -4,7 +4,6 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -22,8 +21,8 @@ class NappingActivity : FragmentActivity() {
     private lateinit var tvPercent: TextView
     private lateinit var tvPhaseLabel: TextView
     private lateinit var progressBar: ProgressBar
-    private lateinit var btnClose: ImageButton
-    private lateinit var btnMute: ImageButton
+    private lateinit var btnClose: TextView
+    private lateinit var btnMute: TextView
     private lateinit var btnAsmrSelect: Button
 
     private var timer: CountDownTimer? = null
@@ -36,7 +35,7 @@ class NappingActivity : FragmentActivity() {
     private val ASMR_SOUNDS = listOf(R.raw.asmr1, R.raw.asmr2)
     private val ASMR_NAMES  = listOf("ASMR 1", "ASMR 2")
 
-    private val TOTAL_TIME = 60_000L // 테스트용 1분, 나중에 1_200_000L 로 바꾸기
+    private val TOTAL_TIME = 60_000L
 
     private var envDone     = false
     private var descentDone = false
@@ -73,10 +72,10 @@ class NappingActivity : FragmentActivity() {
             isMuted = !isMuted
             if (isMuted) {
                 mediaPlayer?.setVolume(0f, 0f)
-                btnMute.setImageResource(android.R.drawable.ic_lock_silent_mode)
+                btnMute.text = "🔈"
             } else {
                 mediaPlayer?.setVolume(1f, 1f)
-                btnMute.setImageResource(android.R.drawable.ic_lock_silent_mode_off)
+                btnMute.text = "🔇"
             }
         }
 
@@ -131,7 +130,6 @@ class NappingActivity : FragmentActivity() {
         tvPhaseLabel.text = "냅핑 시작"
         try {
             val door = vehicle.getDoor()
-            // TODO: door.setDoorLock(전체, true)
         } catch (e: Exception) { }
         playNextAsmr()
     }
@@ -176,20 +174,9 @@ class NappingActivity : FragmentActivity() {
         tvMainMessage.text = "잠깐의 휴식으로 에너지를 채워요"
         tvStatus.text = "20분 뒤 부드럽게 깨울게요."
         tvPhaseLabel.text = "환경 설정 중"
-        try {
-            val seat = vehicle.getSeat()
-            // TODO: seat.setReclineAngle(ROW_1_LEFT, 130)
-            // TODO: seat.setLumbarSupport(ROW_1_LEFT, MAX)
-        } catch (e: Exception) { }
-        try {
-            val light = vehicle.getLight()
-            // TODO: light.setAmbientLightOff()
-        } catch (e: Exception) { }
-        try {
-            val hvac = vehicle.getHVAC()
-            // TODO: hvac.setFanSpeed(1)
-            // TODO: hvac.setAirCirculation(INTERNAL)
-        } catch (e: Exception) { }
+        try { val seat = vehicle.getSeat() } catch (e: Exception) { }
+        try { val light = vehicle.getLight() } catch (e: Exception) { }
+        try { val hvac = vehicle.getHVAC() } catch (e: Exception) { }
     }
 
     private fun applyDescent() {
@@ -214,36 +201,22 @@ class NappingActivity : FragmentActivity() {
         if (phaseMs % 3_000L > 1_000L) return
         val ratio = phaseMs.toFloat() / (TOTAL_TIME * 0.10f)
         val colorTemp = (2500 + 4000 * ratio).toInt()
-        try {
-            val light = vehicle.getLight()
-            // TODO: light.setAmbientLightColorTemp(colorTemp)
-        } catch (e: Exception) { }
+        try { val light = vehicle.getLight() } catch (e: Exception) { }
     }
 
     private fun applyWake1() {
         tvMainMessage.text = "빛과 함께 천천히 깨어나요"
         tvStatus.text = "엠비언트 조명이 서서히 밝아져요."
         tvPhaseLabel.text = "각성 1 · 조명 상승"
-        try {
-            val hvac = vehicle.getHVAC()
-            // TODO: hvac.setTargetTemperature(현재온도 - 2)
-            // TODO: hvac.setAirCirculation(EXTERNAL)
-        } catch (e: Exception) { }
+        try { val hvac = vehicle.getHVAC() } catch (e: Exception) { }
     }
 
     private fun applyWake2() {
         tvMainMessage.text = "이제 다음 일정을 준비해요"
         tvStatus.text = "등받이가 돌아오고, 공조가 전환됩니다."
         tvPhaseLabel.text = "각성 2 · 자세 복귀"
-        try {
-            val seat = vehicle.getSeat()
-            // TODO: seat.setReclineAngle(ROW_1_LEFT, 115)
-            // TODO: seat.setEarMassage(ON)
-        } catch (e: Exception) { }
-        try {
-            val hvac = vehicle.getHVAC()
-            // TODO: hvac.setFanSpeed(2)
-        } catch (e: Exception) { }
+        try { val seat = vehicle.getSeat() } catch (e: Exception) { }
+        try { val hvac = vehicle.getHVAC() } catch (e: Exception) { }
         mediaPlayer?.setVolume(0.2f, 0.2f)
         ttsPlayer = MediaPlayer.create(this, R.raw.tts_wake)
         ttsPlayer?.setOnCompletionListener {
@@ -261,10 +234,7 @@ class NappingActivity : FragmentActivity() {
         mediaPlayer?.stop()
         mediaPlayer?.release()
         mediaPlayer = null
-        try {
-            val door = vehicle.getDoor()
-            // TODO: door.setDoorLock(전체, false)
-        } catch (e: Exception) { }
+        try { val door = vehicle.getDoor() } catch (e: Exception) { }
         vehicle.release()
     }
 

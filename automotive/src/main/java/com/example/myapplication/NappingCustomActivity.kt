@@ -3,7 +3,6 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
@@ -23,12 +22,11 @@ class NappingCustomActivity : FragmentActivity() {
         val tvSeatValue  = findViewById<TextView>(R.id.tvSeatValue)
 
         findViewById<TextView>(R.id.tvBack).setOnClickListener { finish() }
-        findViewById<ImageButton>(R.id.btnClose).setOnClickListener {
+        findViewById<TextView>(R.id.btnClose).setOnClickListener {
             finishAffinity()
             System.exit(0)
         }
 
-        // 조명 슬라이더
         findViewById<SeekBar>(R.id.seekLight).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(sb: SeekBar?, progress: Int, fromUser: Boolean) {
                 lightLevel = progress
@@ -43,7 +41,6 @@ class NappingCustomActivity : FragmentActivity() {
             override fun onStopTrackingTouch(sb: SeekBar?) {}
         })
 
-        // 풍량 슬라이더
         findViewById<SeekBar>(R.id.seekFan).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(sb: SeekBar?, progress: Int, fromUser: Boolean) {
                 fanLevel = progress
@@ -58,7 +55,6 @@ class NappingCustomActivity : FragmentActivity() {
             override fun onStopTrackingTouch(sb: SeekBar?) {}
         })
 
-        // 시트 슬라이더 (100~160도)
         findViewById<SeekBar>(R.id.seekSeat).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(sb: SeekBar?, progress: Int, fromUser: Boolean) {
                 seatAngle = 100 + progress
@@ -68,7 +64,6 @@ class NappingCustomActivity : FragmentActivity() {
             override fun onStopTrackingTouch(sb: SeekBar?) {}
         })
 
-        // 시작하기
         findViewById<Button>(R.id.btnStart).setOnClickListener {
             val intent = Intent(this, NappingActivity::class.java)
             intent.putExtra("lightLevel", lightLevel)

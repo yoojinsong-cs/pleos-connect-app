@@ -36,6 +36,8 @@ class NappingActivity : FragmentActivity() {
     private val ASMR_SOUNDS = listOf(R.raw.asmr1, R.raw.asmr2)
     private val ASMR_NAMES  = listOf("ASMR 1", "ASMR 2")
 
+    private val TOTAL_TIME = 60_000L // 테스트용 1분, 나중에 1_200_000L 로 바꾸기
+
     private var envDone     = false
     private var descentDone = false
     private var wake1Done   = false
@@ -56,32 +58,28 @@ class NappingActivity : FragmentActivity() {
         btnMute       = findViewById(R.id.btnMute)
         btnAsmrSelect = findViewById(R.id.btnAsmrSelect)
 
-        // 뒤로가기
         tvBack.setOnClickListener {
             cleanupAndExit()
             finish()
         }
 
-        // 앱 종료
         btnClose.setOnClickListener {
             cleanupAndExit()
             finishAffinity()
             System.exit(0)
         }
 
-        // 음소거
         btnMute.setOnClickListener {
             isMuted = !isMuted
             if (isMuted) {
                 mediaPlayer?.setVolume(0f, 0f)
-                btnMute.setImageResource(android.R.drawable.ic_audio_vol_mute)
+                btnMute.setImageResource(android.R.drawable.ic_lock_silent_mode)
             } else {
                 mediaPlayer?.setVolume(1f, 1f)
-                btnMute.setImageResource(android.R.drawable.ic_audio_vol)
+                btnMute.setImageResource(android.R.drawable.ic_lock_silent_mode_off)
             }
         }
 
-        // ASMR 드롭다운
         btnAsmrSelect.setOnClickListener {
             val popup = PopupMenu(this, btnAsmrSelect)
             ASMR_NAMES.forEachIndexed { index, name ->
@@ -139,11 +137,11 @@ class NappingActivity : FragmentActivity() {
     }
 
     private fun startNappingMode() {
-        timer = object : CountDownTimer(1_200_000L, 1000L) {
+        timer = object : CountDownTimer(TOTAL_TIME, 1000L) {
             override fun onTick(millisUntilFinished: Long) {
-                val elapsed = 1_200_000L - millisUntilFinished
+                val elapsed = TOTAL_TIME - millisUntilFinished
                 val s = (millisUntilFinished / 1000).toInt()
-                val percent = (elapsed / 1_200_000f * 100).toInt()
+                val percent = (elapsed / TOTAL_TIME.toFloat() * 100).toInt()
 
                 tvTimer.text = String.format(Locale.getDefault(), "%02d:%02d", s / 60, s % 60)
                 tvPercent.text = "$percent%"
@@ -161,16 +159,16 @@ class NappingActivity : FragmentActivity() {
     }
 
     private fun handlePhase(elapsedMs: Long) {
-        val minutes = elapsedMs / 60_000L
+        val percent = elapsedMs.toFloat() / TOTAL_TIME
         when {
-            minutes < 1  -> { if (!envDone)     { envDone = true;     applyEnvironment() } }
-            minutes < 2  -> { if (!descentDone) { descentDone = true; applyDescent() } }
-            minutes < 17 -> { }
-            minutes < 19 -> {
+            percent < 0.05f -> { if (!envDone)     { envDone = true;     applyEnvironment() } }
+            percent < 0.10f -> { if (!descentDone) { descentDone = true; applyDescent() } }
+            percent < 0.85f -> { }
+            percent < 0.95f -> {
                 if (!wake1Done) { wake1Done = true; applyWake1() }
                 applyLightRamp(elapsedMs)
             }
-            else         -> { if (!wake2Done) { wake2Done = true; applyWake2() } }
+            else            -> { if (!wake2Done) { wake2Done = true; applyWake2() } }
         }
     }
 
@@ -204,7 +202,6 @@ class NappingActivity : FragmentActivity() {
             if (!isMuted) mediaPlayer?.setVolume(1f, 1f)
             ttsPlayer?.release()
             ttsPlayer = null
-            // TTS 끝나면 수면 중 텍스트로
             tvMainMessage.text = "잠시 아무것도 하지 않아도 괜찮아요"
             tvStatus.text = "화면은 수면을 위해 최소 밝기로 유지돼요"
             tvPhaseLabel.text = "조용한 휴식 중"
@@ -213,9 +210,9 @@ class NappingActivity : FragmentActivity() {
     }
 
     private fun applyLightRamp(elapsedMs: Long) {
-        val phaseMs = elapsedMs - 17 * 60_000L
-        if (phaseMs % 30_000L > 1_000L) return
-        val ratio = phaseMs.toFloat() / 120_000f
+        val phaseMs = elapsedMs - (TOTAL_TIME * 0.85f).toLong()
+        if (phaseMs % 3_000L > 1_000L) return
+        val ratio = phaseMs.toFloat() / (TOTAL_TIME * 0.10f)
         val colorTemp = (2500 + 4000 * ratio).toInt()
         try {
             val light = vehicle.getLight()

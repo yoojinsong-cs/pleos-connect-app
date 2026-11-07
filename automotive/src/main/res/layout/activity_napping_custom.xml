@@ -26,7 +26,7 @@
         android:layout_marginTop="8dp"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:tint="#7A8FAA"
+        app:tint="#7A8FAA"
         android:contentDescription="닫기"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

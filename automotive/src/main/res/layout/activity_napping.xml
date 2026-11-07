@@ -35,29 +35,30 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- 상단 오른쪽: 음소거 버튼 -->
-    <ImageButton
+    <TextView
         android:id="@+id/btnMute"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
-        android:src="@android:drawable/ic_lock_silent_mode_off"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:tint="#7A8FAA"
+        android:text="🔇"
+        android:textSize="18sp"
+        android:gravity="center"
         android:contentDescription="음소거"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnClose"/>
 
     <!-- 상단 오른쪽: X 닫기 버튼 -->
-    <ImageButton
+    <TextView
         android:id="@+id/btnClose"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:tint="#7A8FAA"
+        android:text="✕"
+        android:textColor="#7A8FAA"
+        android:textSize="18sp"
+        android:gravity="center"
         android:contentDescription="닫기"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

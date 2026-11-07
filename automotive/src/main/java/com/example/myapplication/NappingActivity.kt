@@ -183,10 +183,12 @@ class NappingActivity : FragmentActivity() {
         tvMainMessage.text = "이제 편히 눈을 감아보세요"
         tvStatus.text = "곧 음성 안내가 종료되고 조용한 휴식이 시작됩니다."
         tvPhaseLabel.text = "수면 진입"
-        mediaPlayer?.setVolume(0.2f, 0.2f)
+
+        if (!isMuted) mediaPlayer?.setVolume(0.2f, 0.2f)  // 뮤트 중이면 볼륨 건드리지 않음
+
         ttsPlayer = MediaPlayer.create(this, R.raw.tts_sleep)
         ttsPlayer?.setOnCompletionListener {
-            if (!isMuted) mediaPlayer?.setVolume(1f, 1f)
+            if (!isMuted) mediaPlayer?.setVolume(1f, 1f)  // 뮤트 중이면 복구 안 함
             ttsPlayer?.release()
             ttsPlayer = null
             tvMainMessage.text = "잠시 아무것도 하지 않아도 괜찮아요"
@@ -217,10 +219,12 @@ class NappingActivity : FragmentActivity() {
         tvPhaseLabel.text = "각성 2 · 자세 복귀"
         try { val seat = vehicle.getSeat() } catch (e: Exception) { }
         try { val hvac = vehicle.getHVAC() } catch (e: Exception) { }
-        mediaPlayer?.setVolume(0.2f, 0.2f)
+
+        if (!isMuted) mediaPlayer?.setVolume(0.2f, 0.2f)  // 뮤트 중이면 볼륨 건드리지 않음
+
         ttsPlayer = MediaPlayer.create(this, R.raw.tts_wake)
         ttsPlayer?.setOnCompletionListener {
-            if (!isMuted) mediaPlayer?.setVolume(1f, 1f)
+            if (!isMuted) mediaPlayer?.setVolume(1f, 1f)  // 뮤트 중이면 복구 안 함
             ttsPlayer?.release()
             ttsPlayer = null
         }

@@ -3,27 +3,30 @@ package com.example.myapplication
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.speech.tts.TextToSpeech
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.PopupMenu
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import ai.pleos.playground.vehicle.Vehicle
 import java.util.Locale
 
-class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
+class NappingActivity : FragmentActivity() {
 
     private lateinit var vehicle: Vehicle
+    private lateinit var tvBack: TextView
+    private lateinit var tvMainMessage: TextView
     private lateinit var tvStatus: TextView
     private lateinit var tvTimer: TextView
+    private lateinit var tvPercent: TextView
+    private lateinit var tvPhaseLabel: TextView
+    private lateinit var progressBar: ProgressBar
     private lateinit var btnClose: ImageButton
-    private lateinit var btnBack: ImageButton
     private lateinit var btnMute: ImageButton
     private lateinit var btnAsmrSelect: Button
 
     private var timer: CountDownTimer? = null
-    private var tts: TextToSpeech? = null
     private var mediaPlayer: MediaPlayer? = null
     private var ttsPlayer: MediaPlayer? = null
 
@@ -42,24 +45,31 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_napping)
 
-        tvStatus     = findViewById(R.id.tvStatus)
-        tvTimer      = findViewById(R.id.tvTimer)
-        btnClose     = findViewById(R.id.btnClose)
-        btnBack      = findViewById(R.id.btnBack)
-        btnMute      = findViewById(R.id.btnMute)
+        tvBack        = findViewById(R.id.tvBack)
+        tvMainMessage = findViewById(R.id.tvMainMessage)
+        tvStatus      = findViewById(R.id.tvStatus)
+        tvTimer       = findViewById(R.id.tvTimer)
+        tvPercent     = findViewById(R.id.tvPercent)
+        tvPhaseLabel  = findViewById(R.id.tvPhaseLabel)
+        progressBar   = findViewById(R.id.progressBar)
+        btnClose      = findViewById(R.id.btnClose)
+        btnMute       = findViewById(R.id.btnMute)
         btnAsmrSelect = findViewById(R.id.btnAsmrSelect)
 
+        // 뒤로가기
+        tvBack.setOnClickListener {
+            cleanupAndExit()
+            finish()
+        }
+
+        // 앱 종료
         btnClose.setOnClickListener {
             cleanupAndExit()
             finishAffinity()
             System.exit(0)
         }
 
-        btnBack.setOnClickListener {
-            cleanupAndExit()
-            finish()
-        }
-
+        // 음소거
         btnMute.setOnClickListener {
             isMuted = !isMuted
             if (isMuted) {
@@ -71,7 +81,7 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
             }
         }
 
-        // 드롭다운 메뉴
+        // ASMR 드롭다운
         btnAsmrSelect.setOnClickListener {
             val popup = PopupMenu(this, btnAsmrSelect)
             ASMR_NAMES.forEachIndexed { index, name ->
@@ -86,7 +96,6 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
             popup.show()
         }
 
-        tts = TextToSpeech(this, this)
         vehicle = Vehicle(this)
         vehicle.initialize()
 
@@ -102,15 +111,7 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
         ttsPlayer?.stop()
         ttsPlayer?.release()
         ttsPlayer = null
-        tts?.shutdown()
-        tts = null
         try { vehicle.release() } catch (e: Exception) { }
-    }
-
-    override fun onInit(status: Int) {
-        if (status == TextToSpeech.SUCCESS) {
-            tts?.language = Locale.KOREAN
-        }
     }
 
     private fun playNextAsmr() {
@@ -127,7 +128,9 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun applyNappingStart() {
-        tvStatus.text = "냅핑 모드 시작"
+        tvMainMessage.text = "잠깐의 휴식으로 에너지를 채워요"
+        tvStatus.text = "20분 뒤 부드럽게 깨울게요."
+        tvPhaseLabel.text = "냅핑 시작"
         try {
             val door = vehicle.getDoor()
             // TODO: door.setDoorLock(전체, true)
@@ -138,12 +141,20 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
     private fun startNappingMode() {
         timer = object : CountDownTimer(1_200_000L, 1000L) {
             override fun onTick(millisUntilFinished: Long) {
+                val elapsed = 1_200_000L - millisUntilFinished
                 val s = (millisUntilFinished / 1000).toInt()
+                val percent = (elapsed / 1_200_000f * 100).toInt()
+
                 tvTimer.text = String.format(Locale.getDefault(), "%02d:%02d", s / 60, s % 60)
-                handlePhase(1_200_000L - millisUntilFinished)
+                tvPercent.text = "$percent%"
+                progressBar.progress = percent
+
+                handlePhase(elapsed)
             }
             override fun onFinish() {
                 tvTimer.text = "00:00"
+                tvPercent.text = "100%"
+                progressBar.progress = 100
                 handleFinish()
             }
         }.start()
@@ -164,7 +175,9 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun applyEnvironment() {
-        tvStatus.text = "환경 설정 중..."
+        tvMainMessage.text = "잠깐의 휴식으로 에너지를 채워요"
+        tvStatus.text = "20분 뒤 부드럽게 깨울게요."
+        tvPhaseLabel.text = "환경 설정 중"
         try {
             val seat = vehicle.getSeat()
             // TODO: seat.setReclineAngle(ROW_1_LEFT, 130)
@@ -182,13 +195,19 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun applyDescent() {
-        tvStatus.text = "호흡을 고르세요..."
+        tvMainMessage.text = "이제 편히 눈을 감아보세요"
+        tvStatus.text = "곧 음성 안내가 종료되고 조용한 휴식이 시작됩니다."
+        tvPhaseLabel.text = "수면 진입"
         mediaPlayer?.setVolume(0.2f, 0.2f)
         ttsPlayer = MediaPlayer.create(this, R.raw.tts_sleep)
         ttsPlayer?.setOnCompletionListener {
             if (!isMuted) mediaPlayer?.setVolume(1f, 1f)
             ttsPlayer?.release()
             ttsPlayer = null
+            // TTS 끝나면 수면 중 텍스트로
+            tvMainMessage.text = "잠시 아무것도 하지 않아도 괜찮아요"
+            tvStatus.text = "화면은 수면을 위해 최소 밝기로 유지돼요"
+            tvPhaseLabel.text = "조용한 휴식 중"
         }
         ttsPlayer?.start()
     }
@@ -205,7 +224,9 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun applyWake1() {
-        tvStatus.text = "기상 준비 중..."
+        tvMainMessage.text = "빛과 함께 천천히 깨어나요"
+        tvStatus.text = "엠비언트 조명이 서서히 밝아져요."
+        tvPhaseLabel.text = "각성 1 · 조명 상승"
         try {
             val hvac = vehicle.getHVAC()
             // TODO: hvac.setTargetTemperature(현재온도 - 2)
@@ -214,7 +235,9 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun applyWake2() {
-        tvStatus.text = "20분이 지났어요!"
+        tvMainMessage.text = "이제 다음 일정을 준비해요"
+        tvStatus.text = "등받이가 돌아오고, 공조가 전환됩니다."
+        tvPhaseLabel.text = "각성 2 · 자세 복귀"
         try {
             val seat = vehicle.getSeat()
             // TODO: seat.setReclineAngle(ROW_1_LEFT, 115)
@@ -235,7 +258,9 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun handleFinish() {
-        tvStatus.text = "냅핑 모드 종료"
+        tvMainMessage.text = "냅핑이 종료됐어요"
+        tvStatus.text = "수고하셨어요."
+        tvPhaseLabel.text = "완료"
         mediaPlayer?.stop()
         mediaPlayer?.release()
         mediaPlayer = null
@@ -249,7 +274,6 @@ class NappingActivity : FragmentActivity(), TextToSpeech.OnInitListener {
     override fun onDestroy() {
         super.onDestroy()
         timer?.cancel()
-        tts?.shutdown()
         mediaPlayer?.release()
         ttsPlayer?.release()
         try { vehicle.release() } catch (e: Exception) { }

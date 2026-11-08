@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:text="설정을 확인하거나 원하는 대로 조절할 수 있어요."
             android:textColor="#DCC6AB"
-            android:textSize="52sp"
+            android:textSize="40sp"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="8dp"/>
@@ -97,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="550dp"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="60dp"
             android:layout_marginStart="280dp"
             android:layout_marginEnd="280dp">
 
@@ -222,10 +222,10 @@
             android:layout_height="wrap_content"
             android:text="차량이 자동으로 설정한 적용됩니다."
             android:textColor="#DCC6AB"
-            android:textSize="52sp"
+            android:textSize="40sp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="60dp"/>
 
         <!-- 버튼 2개 -->
         <LinearLayout

@@ -1,226 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1B1C20">
+    android:orientation="vertical"
+    android:background="#1B1C20"
+    android:gravity="center">
 
-    <TextView
-        android:id="@+id/tvBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="〈  SAI"
-        android:textColor="#F6F6F7"
-        android:textSize="17sp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:id="@+id/btnClose"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:text="✕"
-        android:textColor="#7A8FAA"
-        android:textSize="22sp"
-        android:gravity="center"
-        android:contentDescription="닫기"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvSubTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NAPPING · 20 MIN"
-        android:textColor="#DCC6AB"
-        android:textSize="14sp"
-        android:letterSpacing="0.15"
-        android:layout_marginTop="48dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvMainMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="잠깐의 휴식으로 에너지를 채워요"
-        android:textColor="#F6F6F7"
-        android:textSize="26sp"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tvSubTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="20분 뒤 부드럽게 깨울게요."
-        android:textColor="#7A8FAA"
-        android:textSize="15sp"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tvMainMessage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
+    <!-- 상단 바 -->
     <LinearLayout
-        android:id="@+id/layoutCards"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="28dp"
+        android:layout_gravity="top">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="〈"
+                android:textColor="#F6F6F7"
+                android:textSize="48sp"
+                android:layout_marginEnd="16dp"/>
+
+            <ImageView
+                android:layout_width="174dp"
+                android:layout_height="42dp"
+                android:src="@drawable/sai_logo"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnClose"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="✕"
+            android:textColor="#DCC6AB"
+            android:textSize="48sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <!-- 중앙 콘텐츠 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/tvDesc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:paddingStart="120dp"
+        android:paddingEnd="120dp">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="160dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RELAX · PREPARE"
+            android:textColor="#DCC6AB"
+            android:textSize="32sp"
+            android:letterSpacing="0.15"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="릴렉스 시작 전 환경을 확인해 주세요"
+            android:textColor="#F6F6F7"
+            android:textSize="80sp"
+            android:fontFamily="sans-serif-light"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:background="@drawable/bg_card"
-            android:padding="16dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="💡"
-                android:textSize="32sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="앰비언트 조명"
-                android:textColor="#F6F6F7"
-                android:textSize="15sp"
-                android:layout_marginTop="12dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="소등"
-                android:textColor="#7A8FAA"
-                android:textSize="14sp"
-                android:layout_marginTop="8dp"/>
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="설정을 확인하거나 원하는 대로 조절할 수 있어요."
+            android:textColor="#DCC6AB"
+            android:textSize="52sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="8dp"/>
+
+        <!-- 카드 3개 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginEnd="280dp">
+
+            <!-- 조명 카드 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_card_rounded"
+                android:padding="28dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_light"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="조명"
+                    android:textColor="#F6F6F7"
+                    android:textSize="48sp"
+                    android:layout_marginTop="14dp"/>
+
+                <TextView
+                    android:id="@+id/tvLightValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="따뜻한 색"
+                    android:textColor="#DCC6AB"
+                    android:textSize="36sp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- 바람 카드 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_card_rounded"
+                android:padding="28dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_fan"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="바람"
+                    android:textColor="#F6F6F7"
+                    android:textSize="48sp"
+                    android:layout_marginTop="14dp"/>
+
+                <TextView
+                    android:id="@+id/tvFanValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="약하게"
+                    android:textColor="#DCC6AB"
+                    android:textSize="36sp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
+            <!-- 등받이 카드 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_card_rounded"
+                android:padding="28dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_seat"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="등받이"
+                    android:textColor="#F6F6F7"
+                    android:textSize="48sp"
+                    android:layout_marginTop="14dp"/>
+
+                <TextView
+                    android:id="@+id/tvSeatValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="115~120°"
+                    android:textColor="#DCC6AB"
+                    android:textSize="36sp"
+                    android:layout_marginTop="6dp"/>
+            </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="160dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@drawable/bg_card"
-            android:padding="16dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🌀"
-                android:textSize="32sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="공조"
-                android:textColor="#F6F6F7"
-                android:textSize="15sp"
-                android:layout_marginTop="12dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="낮은 풍량"
-                android:textColor="#7A8FAA"
-                android:textSize="14sp"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
+        <!-- 자동 안내 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="차량이 자동으로 설정한 적용됩니다."
+            android:textColor="#DCC6AB"
+            android:textSize="52sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="12dp"/>
 
+        <!-- 버튼 2개 -->
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="160dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@drawable/bg_card"
-            android:padding="16dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="💺"
-                android:textSize="32sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="시트"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="280dp"
+            android:layout_marginEnd="280dp">
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="2"
+                android:text="이대로 시작"
+                android:textColor="#1B1C20"
+                android:textSize="36sp"
+                android:backgroundTint="#F6F6F7"/>
+
+            <Button
+                android:id="@+id/btnCustom"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:text="설정 변경"
                 android:textColor="#F6F6F7"
-                android:textSize="15sp"
-                android:layout_marginTop="12dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="최대 130°"
-                android:textColor="#7A8FAA"
-                android:textSize="14sp"
-                android:layout_marginTop="8dp"/>
+                android:textSize="36sp"
+                android:backgroundTint="#27292E"
+                android:background="@drawable/bg_button_secondary"/>
+
         </LinearLayout>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="차량이 지원하는 범위에서 조절돼요. 세부 설정은 언제든 변경할 수 있어요."
-        android:textColor="#3A4A6A"
-        android:textSize="13sp"
-        android:gravity="center"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/layoutCards"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <LinearLayout
-        android:id="@+id/layoutButtons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <Button
-            android:id="@+id/btnStart"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_weight="1"
-            android:text="이 설정으로 시작하기"
-            android:textColor="#F6F6F7"
-            android:textSize="16sp"
-            android:background="@drawable/bg_button_primary"/>
-
-        <Button
-            android:id="@+id/btnCustom"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
-            android:layout_weight="1"
-            android:text="직접 조절하기"
-            android:textColor="#F6F6F7"
-            android:textSize="16sp"
-            android:background="@drawable/bg_button_secondary"/>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

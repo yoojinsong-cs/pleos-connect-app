@@ -9,6 +9,8 @@
     <uses-permission android:name="pleos.car.permission.CAR_CLIMATE" />
     <uses-permission android:name="pleos.car.permission.CAR_LIGHTS" />
     <uses-permission android:name="pleos.car.permission.CAR_SEATS" />
+    <uses-permission android:name="pleos.permission.TEXT_TO_SPEECH" />
+    <uses-permission android:name="pleos.car.permission.TTS_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +30,7 @@
 
         <activity android:name=".NappingActivity"/>
         <activity android:name=".NappingCustomActivity"/>
+        <activity android:name=".NappingTimeSelectActivity"/>
 
     </application>
 

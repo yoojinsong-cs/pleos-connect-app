@@ -20,7 +20,7 @@ class NappingSettingActivity : FragmentActivity() {
 
         // 이 설정으로 시작하기
         findViewById<Button>(R.id.btnStart).setOnClickListener {
-            startActivity(Intent(this, NappingActivity::class.java))
+            startActivity(Intent(this, NappingTimeSelectActivity::class.java))
         }
 
         // 직접 조절하기

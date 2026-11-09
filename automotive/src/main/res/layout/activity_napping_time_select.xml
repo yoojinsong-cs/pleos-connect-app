@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1B1C20">
+
+    <!-- 상단 바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="28dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="〈"
+                android:textColor="#F6F6F7"
+                android:textSize="48sp"
+                android:layout_marginEnd="16dp"/>
+
+            <ImageView
+                android:layout_width="174dp"
+                android:layout_height="42dp"
+                android:src="@drawable/sai_logo"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnClose"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="✕"
+            android:textColor="#DCC6AB"
+            android:textSize="48sp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <!-- 중앙 콘텐츠 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingStart="80dp"
+        android:paddingEnd="80dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="얼마나 쉬실 건가요?"
+            android:textColor="#F6F6F7"
+            android:textSize="64sp"
+            android:fontFamily="sans-serif-light"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="낮잠 시간을 선택해주세요"
+            android:textColor="#DCC6AB"
+            android:textSize="32sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="60dp"/>
+
+        <!-- 시간 선택 카드 2x2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Row 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:id="@+id/card10"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_time_card_normal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:textColor="#F6F6F7"
+                        android:textSize="72sp"
+                        android:fontFamily="sans-serif-light"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="분"
+                        android:textColor="#DCC6AB"
+                        android:textSize="32sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/card15"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_time_card_normal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15"
+                        android:textColor="#F6F6F7"
+                        android:textSize="72sp"
+                        android:fontFamily="sans-serif-light"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="분"
+                        android:textColor="#DCC6AB"
+                        android:textSize="32sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Row 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/card20"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_time_card_selected">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20"
+                        android:textColor="#DCC6AB"
+                        android:textSize="72sp"
+                        android:fontFamily="sans-serif-light"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="분"
+                        android:textColor="#DCC6AB"
+                        android:textSize="32sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/card30"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_time_card_normal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30"
+                        android:textColor="#F6F6F7"
+                        android:textSize="72sp"
+                        android:fontFamily="sans-serif-light"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="분"
+                        android:textColor="#DCC6AB"
+                        android:textSize="32sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- 하단 시작 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingBottom="48dp">
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="400dp"
+            android:layout_height="80dp"
+            android:text="낮잠 시작하기"
+            android:textColor="#1B1C20"
+            android:textSize="32sp"
+            android:backgroundTint="#DCC6AB"/>
+
+    </LinearLayout>
+
+</LinearLayout>

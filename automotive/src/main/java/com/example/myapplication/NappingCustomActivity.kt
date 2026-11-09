@@ -65,7 +65,7 @@ class NappingCustomActivity : FragmentActivity() {
         })
 
         findViewById<Button>(R.id.btnStart).setOnClickListener {
-            val intent = Intent(this, NappingActivity::class.java)
+            val intent = Intent(this, NappingTimeSelectActivity::class.java)
             intent.putExtra("lightLevel", lightLevel)
             intent.putExtra("fanLevel", fanLevel)
             intent.putExtra("seatAngle", seatAngle)

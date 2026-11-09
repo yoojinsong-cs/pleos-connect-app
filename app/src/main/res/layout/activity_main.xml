@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [공용] activity_main.xml : 첫 화면 + 휴식 제안 팝업 + 모드 화면 자리 + 왼쪽 위 SAI 로고
+     색은 3개만 써요: 배경 #1B1C20 · 흰색 #F6F6F7 · 강조 #DCC6AB
+     (#99F6F6F7 처럼 앞에 두 글자가 붙은 건 같은 흰색을 투명하게 한 거예요) -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1C20">
+
+  <!-- 1. 기본 화면 -->
+  <LinearLayout
+      android:id="@+id/homeView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:orientation="vertical"
+      android:padding="48dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.5"
+        android:text="— SΛI —"
+        android:textColor="#DCC6AB"
+        android:textSize="26sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="마인드풀 드라이브"
+        android:textColor="#F6F6F7"
+        android:textSize="56sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="차량 연결 중..."
+        android:textColor="#99F6F6F7"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/adviceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:text="운전이 끝났나요?"
+        android:textColor="#DCC6AB"
+        android:textSize="34sp" />
+  </LinearLayout>
+
+  <!-- 2. 휴식 제안 팝업 -->
+  <LinearLayout
+      android:id="@+id/proposalCard"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom"
+      android:layout_marginHorizontal="40dp"
+      android:layout_marginBottom="32dp"
+      android:orientation="vertical"
+      android:padding="36dp"
+      android:visibility="gone">
+
+    <TextView
+        android:id="@+id/proposalTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="이브닝 릴렉스 5분, 잠시 쉬어 갈까요?"
+        android:textColor="#F6F6F7"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="시트·조명·공조를 맞추고 싱잉볼 리추얼을 시작해요."
+        android:textColor="#99F6F6F7"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal">
+
+      <!-- "좋아요" = 릴렉스 시작 -->
+      <TextView
+          android:id="@+id/relaxButton"
+          android:layout_width="0dp"
+          android:layout_height="76dp"
+          android:layout_marginEnd="8dp"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:text="좋아요"
+          android:textColor="#1B1C20"
+          android:textSize="24sp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/noButton"
+          android:layout_width="0dp"
+          android:layout_height="76dp"
+          android:layout_marginStart="8dp"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:text="지금은 괜찮아요"
+          android:textColor="#F6F6F7"
+          android:textSize="24sp" />
+    </LinearLayout>
+
+    <!-- 다른 휴식 (팀원 모드) -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="다른 휴식"
+          android:textColor="#99F6F6F7"
+          android:textSize="20sp" />
+
+      <TextView
+          android:id="@+id/napButton"
+          android:layout_width="wrap_content"
+          android:layout_height="56dp"
+          android:layout_marginStart="12dp"
+          android:gravity="center"
+          android:paddingHorizontal="18dp"
+          android:text="냅핑"
+          android:textColor="#DCC6AB"
+          android:textSize="21sp" />
+
+      <TextView
+          android:id="@+id/awakeButton"
+          android:layout_width="wrap_content"
+          android:layout_height="56dp"
+          android:layout_marginStart="8dp"
+          android:gravity="center"
+          android:paddingHorizontal="18dp"
+          android:text="각성"
+          android:textColor="#DCC6AB"
+          android:textSize="21sp" />
+    </LinearLayout>
+  </LinearLayout>
+
+  <!-- 3. 모드 화면이 들어갈 자리 (mode_relax.xml / mode_nap.xml / mode_awake.xml) -->
+  <FrameLayout
+      android:id="@+id/modeContainer"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="gone" />
+
+  <!-- 4. 왼쪽 위 SAI 로고 (모든 화면 위에 항상 보여요) -->
+  <LinearLayout
+      android:id="@+id/logoBar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="top|start"
+      android:layout_marginStart="36dp"
+      android:layout_marginTop="26dp"
+      android:gravity="center_vertical"
+      android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/logoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:letterSpacing="0.45"
+        android:text="SΛI"
+        android:textColor="#F6F6F7"
+        android:textSize="42sp" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="32dp"
+        android:layout_marginHorizontal="18dp"
+        android:background="#66F6F6F7" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Space Across Identities"
+        android:textColor="#B3F6F6F7"
+        android:textSize="21sp" />
+  </LinearLayout>
+
+  <!-- 5. 차량 설정 실패 메시지 (작은 글씨, 테스트용) -->
+  <TextView
+      android:id="@+id/debugText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|end"
+      android:layout_margin="8dp"
+      android:textColor="#66F6F6F7"
+      android:textSize="11sp" />
+
+</FrameLayout>

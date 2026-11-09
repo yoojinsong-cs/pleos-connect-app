@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [릴렉스 담당] mode_relax.xml : 릴렉스 화면 3장 + 항상 보이는 종료하기 버튼
+     ① 오늘의 환경 (+ 옆에서 말해 주는 Gleo)  ② 싱잉볼 · Step 1~5  ③ 이번 주 리추얼 기록
+     색은 3개만 써요: 배경 #1B1C20 · 흰색 #F6F6F7 · 강조 #DCC6AB
+     (#99F6F6F7 처럼 앞에 두 글자가 붙은 건 같은 색을 투명하게 한 거예요) -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B1C20">
+
+    <!-- ① 오늘의 환경 + Gleo -->
+    <LinearLayout
+        android:id="@+id/relaxEnvLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingHorizontal="40dp"
+        android:paddingTop="110dp"
+        android:paddingBottom="110dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/relaxCountdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="8dp"
+                android:text="10s  ›"
+                android:textColor="#DCC6AB"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/relaxEnvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="오늘의 환경이에요."
+                android:textColor="#F6F6F7"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Gleo가 설정을 마치면 자동으로 시작합니다."
+                android:textColor="#99F6F6F7"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/relaxTileLight"
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:gravity="center"
+                        android:text="☼"
+                        android:textColor="#DCC6AB"
+                        android:textSize="72sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Pumpkin"
+                        android:textColor="#F6F6F7"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="따뜻한 조명 2500K"
+                        android:textColor="#99F6F6F7"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/relaxTileFan"
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:gravity="center"
+                        android:text="≋"
+                        android:textColor="#DCC6AB"
+                        android:textSize="72sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Low"
+                        android:textColor="#F6F6F7"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="약한 바람 · 내부 순환"
+                        android:textColor="#99F6F6F7"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/relaxTileSeat"
+                        android:layout_width="match_parent"
+                        android:layout_height="170dp"
+                        android:gravity="center"
+                        android:text="∠"
+                        android:textColor="#DCC6AB"
+                        android:textSize="72sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Ritual mode"
+                        android:textColor="#F6F6F7"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="시트 118° · 허리 받침 앞으로"
+                        android:textColor="#99F6F6F7"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/relaxTempLabel"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:text="24.0°C"
+                    android:textColor="#F6F6F7"
+                    android:textSize="24sp" />
+
+                <SeekBar
+                    android:id="@+id/relaxTempSeek"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="볼륨"
+                    android:textColor="#99F6F6F7"
+                    android:textSize="20sp" />
+
+                <SeekBar
+                    android:id="@+id/relaxVolumeSeek"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 오른쪽: Gleo가 말해 주는 칸 -->
+        <LinearLayout
+            android:id="@+id/relaxGleoPanel"
+            android:layout_width="340dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:orientation="vertical"
+            android:padding="28dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✦ Gleo"
+                android:textColor="#DCC6AB"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/relaxGleoLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:lineSpacingExtra="6dp"
+                android:textColor="#80F6F6F7"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/relaxGleoBubble"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:lineSpacingExtra="6dp"
+                android:text="환경을 준비하고 있어요."
+                android:textColor="#F6F6F7"
+                android:textSize="23sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ② 싱잉볼 · Step 1~5 -->
+    <LinearLayout
+        android:id="@+id/relaxRitualLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="40dp"
+        android:paddingTop="100dp"
+        android:paddingBottom="110dp"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.5"
+                    android:text="— SΛI —"
+                    android:textColor="#DCC6AB"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/relaxRitualTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="오늘의 싱잉볼"
+                    android:textColor="#F6F6F7"
+                    android:textSize="48sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/relaxRitualSub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="역할과 역할 사이를 조율한다"
+                    android:textColor="#B3F6F6F7"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/relaxTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:text="1:15"
+                android:textColor="#DCC6AB"
+                android:textSize="28sp" />
+        </FrameLayout>
+
+        <com.example.hyundai_first_project.SingingBowlView
+            android:id="@+id/relaxBowl"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Step 1~5 칸 (RelaxMode.kt가 채워요) -->
+        <LinearLayout
+            android:id="@+id/relaxStepRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+    <!-- ③ 이번 주 리추얼 기록 -->
+    <FrameLayout
+        android:id="@+id/relaxRecordLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="40dp"
+        android:paddingTop="100dp"
+        android:paddingBottom="110dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:text="종료 모드로 돌아가고 있어요"
+            android:textColor="#DCC6AB"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/relaxRecordCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:text="10s  ›"
+            android:textColor="#F6F6F7"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/relaxRecordTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이번주도 벌써 2번째군요"
+                android:textColor="#F6F6F7"
+                android:textSize="46sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="마이현대 앱에서 자세히 확인하실 수 있습니다"
+                android:textColor="#B3F6F6F7"
+                android:textSize="22sp" />
+
+            <!-- 월~일 7칸 (RelaxMode.kt가 채워요) -->
+            <LinearLayout
+                android:id="@+id/relaxWeekRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:orientation="horizontal" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- 릴렉스 모드 내내 보이는 종료하기 (오른쪽 아래) -->
+    <TextView
+        android:id="@+id/relaxExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="32dp"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="16dp"
+        android:text="종료하기"
+        android:textColor="#F6F6F7"
+        android:textSize="22sp" />
+
+</FrameLayout>

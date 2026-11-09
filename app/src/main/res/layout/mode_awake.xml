@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- [각성 담당] mode_awake.xml : 각성 모드 화면. 자유롭게 바꾸세요 (id는 awake로 시작하게) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2B2412"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="48dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="☀️"
+        android:textSize="96sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="각성 모드"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="아직 만들고 있어요. AwakeMode.kt 와 mode_awake.xml 만 고치면 돼요."
+        android:textColor="#C9D6E8"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/awakeBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="14dp"
+        android:text="돌아가기"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+</LinearLayout>

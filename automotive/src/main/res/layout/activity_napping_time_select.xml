@@ -159,13 +159,13 @@
                     android:layout_marginEnd="10dp"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:background="@drawable/bg_time_card_selected">
+                    android:background="@drawable/bg_time_card_normal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="20"
-                        android:textColor="#DCC6AB"
+                        android:textColor="#F6F6F7"
                         android:textSize="72sp"
                         android:fontFamily="sans-serif-light"/>
                     <TextView
@@ -213,15 +213,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:paddingBottom="48dp">
+        android:paddingTop="40dp"
+        android:paddingBottom="00dp">
 
         <Button
             android:id="@+id/btnStart"
-            android:layout_width="400dp"
-            android:layout_height="80dp"
+            android:layout_width="600dp"
+            android:layout_height="100dp"
             android:text="낮잠 시작하기"
             android:textColor="#1B1C20"
-            android:textSize="32sp"
+            android:textSize="40sp"
             android:backgroundTint="#DCC6AB"/>
 
     </LinearLayout>

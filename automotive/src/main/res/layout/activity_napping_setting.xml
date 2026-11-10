@@ -130,7 +130,7 @@
                     android:layout_marginTop="18dp"
                     android:text="조명"
                     android:textColor="#F6F6F7"
-                    android:textSize="24sp"
+                    android:textSize="28sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif" />
 
@@ -140,7 +140,7 @@
                     android:layout_marginTop="6dp"
                     android:text="어둡게"
                     android:textColor="#99F6F6F7"
-                    android:textSize="16sp"
+                    android:textSize="22sp"
                     android:fontFamily="sans-serif" />
             </LinearLayout>
 
@@ -171,7 +171,7 @@
                     android:layout_marginTop="18dp"
                     android:text="바람"
                     android:textColor="#F6F6F7"
-                    android:textSize="24sp"
+                    android:textSize="28sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif" />
 
@@ -181,7 +181,7 @@
                     android:layout_marginTop="6dp"
                     android:text="약하게"
                     android:textColor="#99F6F6F7"
-                    android:textSize="16sp"
+                    android:textSize="22sp"
                     android:fontFamily="sans-serif" />
             </LinearLayout>
 
@@ -212,7 +212,7 @@
                     android:layout_marginTop="18dp"
                     android:text="등받이"
                     android:textColor="#F6F6F7"
-                    android:textSize="24sp"
+                    android:textSize="28sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif" />
 
@@ -222,7 +222,7 @@
                     android:layout_marginTop="6dp"
                     android:text="120°"
                     android:textColor="#99F6F6F7"
-                    android:textSize="16sp"
+                    android:textSize="22sp"
                     android:fontFamily="sans-serif" />
             </LinearLayout>
         </LinearLayout>
@@ -254,7 +254,7 @@
             android:backgroundTint="#E1E1E1"
             android:text="시작"
             android:textColor="#1B1C20"
-            android:textSize="26sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:fontFamily="sans-serif" />
 

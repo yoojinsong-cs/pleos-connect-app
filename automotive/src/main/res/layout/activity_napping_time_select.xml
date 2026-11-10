@@ -251,7 +251,7 @@
             android:layout_height="96dp"
             android:text="시작"
             android:textColor="#1B1C20"
-            android:textSize="26sp"
+            android:textSize="28sp"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
             android:backgroundTint="#E1E1E1"/>

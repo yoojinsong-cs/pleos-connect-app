@@ -1,335 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 환경 확인 화면 (친구 mode_relax.xml의 relaxPrepare 그대로) -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1B1C20"
-    android:gravity="center"
     android:orientation="vertical">
 
-    <!-- 카드 3개: 조명 · 바람 · 등받이 -->
+    <!-- 상단 바 -->
     <LinearLayout
-        android:id="@+id/relaxCards"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- 조명 -->
-        <LinearLayout
-            android:id="@+id/relaxLightCard"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingVertical="40dp">
-
-            <TextView
-                android:id="@+id/relaxLightIcon"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:gravity="center"
-                android:text="☼"
-                android:textColor="#DCC6AB"
-                android:textSize="34sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="조명"
-                android:textColor="#F6F6F7"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/relaxLightSub"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="따뜻한 색"
-                android:textColor="#99F6F6F7"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <!-- 바람 -->
-        <LinearLayout
-            android:id="@+id/relaxAirCard"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingVertical="40dp">
-
-            <TextView
-                android:id="@+id/relaxAirIcon"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:gravity="center"
-                android:text="≋"
-                android:textColor="#DCC6AB"
-                android:textSize="34sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="바람"
-                android:textColor="#F6F6F7"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/relaxAirSub"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="약하게"
-                android:textColor="#99F6F6F7"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <!-- 등받이 -->
-        <LinearLayout
-            android:id="@+id/relaxSeatCard"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingVertical="40dp">
-
-            <TextView
-                android:id="@+id/relaxSeatIcon"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:gravity="center"
-                android:text="⌒"
-                android:textColor="#DCC6AB"
-                android:textSize="34sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="등받이"
-                android:textColor="#F6F6F7"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/relaxSeatSub"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="115–120°"
-                android:textColor="#99F6F6F7"
-                android:textSize="16sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- 설정 변경 눌렀을 때 나오는 패널 (기본 숨김) -->
-    <LinearLayout
-        android:id="@+id/relaxSettings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="28dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="24dp"
-        android:visibility="gone">
-
-        <!-- 조명 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="조명"
-                android:textColor="#F6F6F7"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/relaxLightChoices"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal" />
-        </LinearLayout>
-
-        <!-- 바람 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="바람"
-                android:textColor="#F6F6F7"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/relaxAirChoices"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal" />
-        </LinearLayout>
-
-        <!-- 등받이 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="등받이"
-                android:textColor="#F6F6F7"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/relaxSeatLabel"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="118°"
-                android:textColor="#DCC6AB"
-                android:textSize="22sp" />
-
-            <SeekBar
-                android:id="@+id/relaxSeatSeek"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:progressTint="#DCC6AB"
-                android:thumbTint="#DCC6AB" />
-        </LinearLayout>
-
-        <!-- 온도 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="온도"
-                android:textColor="#F6F6F7"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/relaxTempLabel"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="24.0°C"
-                android:textColor="#DCC6AB"
-                android:textSize="22sp" />
-
-            <SeekBar
-                android:id="@+id/relaxTempSeek"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:progressTint="#DCC6AB"
-                android:thumbTint="#DCC6AB" />
-        </LinearLayout>
-
-        <!-- 소리 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="소리"
-                android:textColor="#F6F6F7"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/relaxVolumeLabel"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="70%"
-                android:textColor="#DCC6AB"
-                android:textSize="22sp" />
-
-            <SeekBar
-                android:id="@+id/relaxVolumeSeek"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_weight="1"
-                android:progressTint="#DCC6AB"
-                android:thumbTint="#DCC6AB" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- 안내 문구 -->
-    <TextView
-        android:id="@+id/relaxNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:text="차량이 지원하는 설정만 적용됩니다."
-        android:textColor="#80F6F6F7"
-        android:textSize="16sp" />
-
-    <!-- 버튼 2개 -->
-    <LinearLayout
-        android:id="@+id/relaxButtons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:orientation="horizontal">
+        android:layout_height="112dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="28dp">
 
         <TextView
-            android:id="@+id/relaxStart"
-            android:layout_width="0dp"
-            android:layout_height="96dp"
-            android:layout_weight="1"
+            android:id="@+id/tvBack"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:gravity="center"
-            android:text="이대로 시작"
-            android:textColor="#1B1C20"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/relaxChange"
-            android:layout_width="0dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="설정 변경"
+            android:text="‹"
             android:textColor="#F6F6F7"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:textSize="56sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="SAI"
+            android:src="@drawable/sai_logo" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/btnClose"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:text="✕"
+            android:textColor="#F6F6F7"
+            android:textSize="40sp" />
     </LinearLayout>
 
+    <!-- 중앙 콘텐츠 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="64dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.2"
+            android:text="NAPPING · PREPARE"
+            android:textColor="#DCC6AB"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="냅핑 전 환경을 확인해 주세요"
+            android:textColor="#F6F6F7"
+            android:textSize="48sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="차량 환경을 냅핑에 맞게 설정해요."
+            android:textColor="#99F6F6F7"
+            android:textSize="24sp" />
+
+        <!-- 카드 3개 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:orientation="horizontal">
+
+            <!-- 조명 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingVertical="40dp">
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:gravity="center"
+                    android:text="☼"
+                    android:textColor="#DCC6AB"
+                    android:textSize="34sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="조명"
+                    android:textColor="#F6F6F7"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="어둡게"
+                    android:textColor="#99F6F6F7"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- 바람 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingVertical="40dp">
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:gravity="center"
+                    android:text="≋"
+                    android:textColor="#DCC6AB"
+                    android:textSize="34sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="바람"
+                    android:textColor="#F6F6F7"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="약하게"
+                    android:textColor="#99F6F6F7"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- 등받이 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingVertical="40dp">
+
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:gravity="center"
+                    android:text="⌒"
+                    android:textColor="#DCC6AB"
+                    android:textSize="34sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="등받이"
+                    android:textColor="#F6F6F7"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="115–120°"
+                    android:textColor="#99F6F6F7"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="차량이 지원하는 설정만 적용됩니다."
+            android:textColor="#80F6F6F7"
+            android:textSize="18sp" />
+
+        <!-- 버튼 2개 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="0dp"
+                android:layout_height="96dp"
+                android:layout_weight="2"
+                android:backgroundTint="#DCC6AB"
+                android:text="이 설정으로 시작하기"
+                android:textColor="#1B1C20"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnCustom"
+                android:layout_width="0dp"
+                android:layout_height="96dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:backgroundTint="#27292E"
+                android:text="직접 조절하기"
+                android:textColor="#F6F6F7"
+                android:textSize="26sp" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

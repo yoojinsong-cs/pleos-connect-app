@@ -88,7 +88,6 @@
             android:text="눈을 감고 편안하게 쉬세요"
             android:textColor="#F6F6F7"
             android:textSize="80sp"
-            android:fontFamily="sans-serif-light"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="10dp"/>
@@ -166,10 +165,8 @@
                     android:layout_height="wrap_content"
                     android:text="00:00"
                     android:textColor="#F6F6F7"
-                    android:textSize="52sp"
-                    android:fontFamily="sans-serif-light"/>
+                    android:textSize="52sp"/>
 
-                <!-- id 추가: 선택한 시간에 맞게 동적으로 바뀜 -->
                 <TextView
                     android:id="@+id/tvTotalTime"
                     android:layout_width="wrap_content"
@@ -217,7 +214,6 @@
                 android:text="0%"
                 android:textColor="#F6F6F7"
                 android:textSize="52sp"
-                android:fontFamily="sans-serif-light"
                 android:layout_marginTop="8dp"/>
 
         </LinearLayout>

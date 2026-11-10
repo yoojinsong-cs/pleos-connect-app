@@ -13,19 +13,16 @@
         android:orientation="horizontal"
         android:paddingHorizontal="28dp">
 
-        <TextView
+        <ImageView
             android:id="@+id/tvBack"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:text="‹"
-            android:textColor="#F6F6F7"
-            android:textSize="56sp"
-            android:fontFamily="sans-serif" />
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_back"
+            android:contentDescription="뒤로가기" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_width="160dp"
+            android:layout_height="72dp"
             android:layout_marginStart="16dp"
             android:adjustViewBounds="true"
             android:contentDescription="SAI"
@@ -36,18 +33,15 @@
             android:layout_height="1dp"
             android:layout_weight="1" />
 
-        <TextView
+        <ImageView
             android:id="@+id/btnClose"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:text="✕"
-            android:textColor="#F6F6F7"
-            android:textSize="40sp"
-            android:fontFamily="sans-serif" />
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/ic_close"
+            android:contentDescription="닫기" />
     </LinearLayout>
 
-    <!-- 상단바 26dp 아래 고정 헤더 텍스트 -->
+    <!-- 상단바 아래 고정 헤더 텍스트 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -130,7 +124,7 @@
                     android:layout_marginTop="18dp"
                     android:text="조명"
                     android:textColor="#F6F6F7"
-                    android:textSize="28sp"
+                    android:textSize="32sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif" />
 
@@ -140,7 +134,7 @@
                     android:layout_marginTop="6dp"
                     android:text="어둡게"
                     android:textColor="#99F6F6F7"
-                    android:textSize="22sp"
+                    android:textSize="28sp"
                     android:fontFamily="sans-serif" />
             </LinearLayout>
 
@@ -171,7 +165,7 @@
                     android:layout_marginTop="18dp"
                     android:text="바람"
                     android:textColor="#F6F6F7"
-                    android:textSize="28sp"
+                    android:textSize="32sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif" />
 
@@ -181,7 +175,7 @@
                     android:layout_marginTop="6dp"
                     android:text="약하게"
                     android:textColor="#99F6F6F7"
-                    android:textSize="22sp"
+                    android:textSize="28sp"
                     android:fontFamily="sans-serif" />
             </LinearLayout>
 
@@ -212,7 +206,7 @@
                     android:layout_marginTop="18dp"
                     android:text="등받이"
                     android:textColor="#F6F6F7"
-                    android:textSize="28sp"
+                    android:textSize="32sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif" />
 
@@ -222,7 +216,7 @@
                     android:layout_marginTop="6dp"
                     android:text="120°"
                     android:textColor="#99F6F6F7"
-                    android:textSize="22sp"
+                    android:textSize="28sp"
                     android:fontFamily="sans-serif" />
             </LinearLayout>
         </LinearLayout>
@@ -238,7 +232,7 @@
 
     </LinearLayout>
 
-    <!-- 버튼 2개: 하단 64dp 고정 -->
+    <!-- 버튼: 하단 64dp 고정 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -251,7 +245,7 @@
             android:layout_width="0dp"
             android:layout_height="96dp"
             android:layout_weight="1"
-            android:backgroundTint="#E1E1E1"
+            android:background="@drawable/bg_button_start"
             android:text="시작"
             android:textColor="#1B1C20"
             android:textSize="28sp"

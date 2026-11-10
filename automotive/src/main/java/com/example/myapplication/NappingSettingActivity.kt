@@ -12,20 +12,18 @@ class NappingSettingActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_napping_setting)
 
+        val totalSeconds = intent.getIntExtra("TOTAL_SECONDS", 20 * 60)
+
         findViewById<TextView>(R.id.tvBack).setOnClickListener { finish() }
         findViewById<TextView>(R.id.btnClose).setOnClickListener {
             finishAffinity()
             System.exit(0)
         }
 
-        // 이 설정으로 시작하기
         findViewById<Button>(R.id.btnStart).setOnClickListener {
-            startActivity(Intent(this, NappingTimeSelectActivity::class.java))
-        }
-
-        // 직접 조절하기
-        findViewById<Button>(R.id.btnCustom).setOnClickListener {
-            startActivity(Intent(this, NappingCustomActivity::class.java))
+            val intent = Intent(this, NappingActivity::class.java)
+            intent.putExtra("TOTAL_SECONDS", totalSeconds)
+            startActivity(intent)
         }
     }
 }

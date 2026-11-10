@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="냅핑 시작 전 환경을 확인해 주세요"
+            android:text="낮잠 시작 전 환경을 확인해 주세요"
             android:textColor="#F6F6F7"
             android:textSize="48sp"
             android:textStyle="bold"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="설정을 확인하거나 원하는 대로 조절할 수 있어요."
+            android:text="#################################################################"
             android:textColor="#99F6F6F7"
             android:textSize="24sp"
             android:fontFamily="sans-serif" />
@@ -220,7 +220,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="115–120°"
+                    android:text="120°"
                     android:textColor="#99F6F6F7"
                     android:textSize="16sp"
                     android:fontFamily="sans-serif" />
@@ -252,23 +252,12 @@
             android:layout_height="96dp"
             android:layout_weight="1"
             android:backgroundTint="#E1E1E1"
-            android:text="이대로 시작"
+            android:text="시작"
             android:textColor="#1B1C20"
             android:textSize="26sp"
             android:textStyle="bold"
             android:fontFamily="sans-serif" />
 
-        <Button
-            android:id="@+id/btnCustom"
-            android:layout_width="0dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:backgroundTint="#27292E"
-            android:text="설정 변경"
-            android:textColor="#F6F6F7"
-            android:textSize="26sp"
-            android:fontFamily="sans-serif" />
     </LinearLayout>
 
 </LinearLayout>

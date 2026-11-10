@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentActivity
 
 class NappingTimeSelectActivity : FragmentActivity() {
 
-    private var selectedMinutes = 20  // 기본값 20분
+    private var selectedMinutes = 20
     private val cards = mutableMapOf<Int, LinearLayout>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,13 +22,11 @@ class NappingTimeSelectActivity : FragmentActivity() {
             System.exit(0)
         }
 
-        // 카드 등록
         cards[10] = findViewById(R.id.card10)
         cards[15] = findViewById(R.id.card15)
         cards[20] = findViewById(R.id.card20)
         cards[30] = findViewById(R.id.card30)
 
-        // 카드 클릭 이벤트
         cards.forEach { (minutes, card) ->
             card.setOnClickListener {
                 selectedMinutes = minutes
@@ -36,13 +34,11 @@ class NappingTimeSelectActivity : FragmentActivity() {
             }
         }
 
-        // 초기 선택 상태 반영
         updateCardSelection()
 
-        // 시작하기 버튼
         findViewById<Button>(R.id.btnStart).setOnClickListener {
-            val intent = Intent(this, NappingActivity::class.java)
-            intent.putExtra("TOTAL_SECONDS", 1 * 60)
+            val intent = Intent(this, NappingSettingActivity::class.java)
+            intent.putExtra("TOTAL_SECONDS", selectedMinutes * 60)
             startActivity(intent)
         }
     }
@@ -51,11 +47,9 @@ class NappingTimeSelectActivity : FragmentActivity() {
         cards.forEach { (minutes, card) ->
             if (minutes == selectedMinutes) {
                 card.setBackgroundResource(R.drawable.bg_time_card_selected)
-                // 선택된 카드의 숫자 색상 금색으로
                 (card.getChildAt(0) as? TextView)?.setTextColor(0xFFDCC6AB.toInt())
             } else {
                 card.setBackgroundResource(R.drawable.bg_time_card_normal)
-                // 미선택 카드 흰색으로
                 (card.getChildAt(0) as? TextView)?.setTextColor(0xFFF6F6F7.toInt())
             }
         }

@@ -27,7 +27,7 @@ class SingingBowlView @JvmOverloads constructor(
     // ===== 바꿔도 되는 값 =====
     private val accent = Color.parseColor("#DCC6AB")   // 강조색
     private val bowlRows = 12                           // 볼 몸통 점 줄 수
-    private val ringCount = 4                           // 바닥 물결 개수
+    private val ringCount = 6                           // 바닥 물결 개수
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = accent }
     private val dp = resources.displayMetrics.density

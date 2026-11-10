@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 interface RestMode {
     fun start(host: ModeHost)   // 모드 시작: 화면을 host.container에 넣고 시작
     fun stop()                  // 모드 강제 종료: 타이머·소리 정리 (차량 복원은 MainActivity가 해요)
+    // 리추얼이 다 끝났는지 (끝났으면 ✕ = 앱 닫기, 아니면 ✕ = 홈으로). 안 만들면 false 예요.
+    fun isFinished(): Boolean = false
 }
 
 class ModeHost(
@@ -40,3 +42,4 @@ fun View.round(color: String, radiusDp: Float, stroke: String? = null) {
         if (stroke != null) setStroke((1 * density).toInt(), Color.parseColor(stroke))
     }
 }
+

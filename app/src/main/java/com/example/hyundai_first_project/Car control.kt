@@ -80,16 +80,20 @@ class CarControl(
     }
 
     // 바람 세기를 가장 약하게 (꺼짐 바로 위 단계)
-    fun setFanLow() {
+    fun setFanLow() = setFanLevel(0f)
+
+    // 바람 세기: 0f = 가장 약하게(꺼짐 바로 위) ~ 1f = 가장 세게
+    fun setFanLevel(strength: Float) {
         val hvac = vehicle.getHVAC()
         safe("바람") {
             hvac.checkHvacFanSpeedCapabilities({ _, areas ->
                 areas.forEach { (area, bounds) ->
                     val low = bounds.minValue ?: return@forEach
                     val high = bounds.maxValue ?: return@forEach
+                    val target = (low + 1 + ((high - low - 1) * strength.coerceIn(0f, 1f)).toInt()).coerceIn(low, high)
                     hvac.getHvacFanSpeed(area, { now ->
                         if (now != null) savedFan.putIfAbsent(area, now)
-                        hvac.setHvacFanSpeed(area, (low + 1).coerceIn(low, high), ok, fail("바람"))
+                        hvac.setHvacFanSpeed(area, target, ok, fail("바람"))
                     }, fail("바람"))
                 }
             }, fail("바람"))
@@ -323,4 +327,3 @@ object Sdk {
         else -> value
     }
 }
-

@@ -2,7 +2,9 @@ package com.example.hyundai_first_project
 
 // ─────────────────────────────────────────────
 // [공용] MainActivity.kt  ─ 앱의 "껍데기"
-// 기어 확인 → 휴식 제안 팝업 → 고른 모드 실행 → 끝나면 원래대로
+// P단 → 준비 완료 → 모드 선택 → 모드 실행 → 끝나면 원래대로
+// 위쪽 ‹ 는 한 화면 뒤로, ✕ 는 언제든 강제 종료(차량 설정 원래대로)예요.
+// 모드 중에 P에서 빠지면 "차량 상태가 바뀌어 중단했어요" 화면을 보여줘요.
 // 3명 모두 쓰는 파일이라, 고칠 땐 팀에 먼저 말해 주세요.
 // (맨 윗줄 package ... 은 원래 파일 것을 그대로 두고, 그 아래에 붙여 넣으세요)
 // ─────────────────────────────────────────────
@@ -20,6 +22,7 @@ import android.speech.tts.UtteranceProgressListener
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
@@ -27,8 +30,7 @@ import java.util.concurrent.ConcurrentHashMap
 class MainActivity : AppCompatActivity() {
 
     // ===== 바꿔도 되는 설정값 =====
-    private val oneMinute = 1_000L          // 테스트: 1초 = 1분 (실제: 60_000L)
-    private val driverName = "붕붕이"
+    private val driverName = "SAI"
     private val locationPermission = "pleos.car.permission.FUSED_LOCATION"
 
     private lateinit var vehicle: Vehicle
@@ -41,15 +43,18 @@ class MainActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
 
     private lateinit var homeView: View
-    private lateinit var proposalCard: View
+    private lateinit var readyView: View
+    private lateinit var modeSelectView: View
     private lateinit var modeContainer: FrameLayout
+    private lateinit var safetyView: View
+    private lateinit var headerBack: View
+    private lateinit var headerClose: View
     private lateinit var statusText: TextView
     private lateinit var adviceText: TextView
-    private lateinit var proposalTitle: TextView
+    private lateinit var readyParkSub: TextView
     private lateinit var debugText: TextView
 
     private var parked: Boolean? = null
-    private var driveStartTime = System.currentTimeMillis()
     private var locationReady = false
     private var place = "위치 확인 중"
     private var currentMode: RestMode? = null
@@ -83,35 +88,89 @@ class MainActivity : AppCompatActivity() {
 
     private fun bindViews() {
         homeView = findViewById(R.id.homeView)
-        proposalCard = findViewById(R.id.proposalCard)
+        readyView = findViewById(R.id.readyView)
+        modeSelectView = findViewById(R.id.modeSelectView)
         modeContainer = findViewById(R.id.modeContainer)
+        safetyView = findViewById(R.id.safetyView)
+        headerBack = findViewById(R.id.headerBack)
+        headerClose = findViewById(R.id.headerClose)
         statusText = findViewById(R.id.statusText)
         adviceText = findViewById(R.id.adviceText)
-        proposalTitle = findViewById(R.id.proposalTitle)
+        readyParkSub = findViewById(R.id.readyParkSub)
         debugText = findViewById(R.id.debugText)
 
-        // ★ 모드 버튼 → 각자 만든 모드 실행 (모드를 새로 만들면 여기 한 줄 추가)
-        findViewById<TextView>(R.id.relaxButton).setOnClickListener { startMode(RelaxMode()) }
-        findViewById<TextView>(R.id.napButton).setOnClickListener { startMode(NapMode()) }
-        findViewById<TextView>(R.id.awakeButton).setOnClickListener { startMode(AwakeMode()) }
-        findViewById<TextView>(R.id.noButton).setOnClickListener {
-            show(homeView)
-            adviceText.text = "알겠어요. 피곤하면 언제든 P에 두세요."
+        // 버튼
+        findViewById<View>(R.id.readyNext).setOnClickListener { show(modeSelectView) }
+        // ★ 모드 카드 → 각자 만든 모드 실행 (모드를 새로 만들면 여기 한 줄 추가)
+        findViewById<View>(R.id.relaxButton).setOnClickListener { startMode(RelaxMode()) }
+        findViewById<View>(R.id.napButton).setOnClickListener { startMode(NapMode()) }
+        findViewById<View>(R.id.awakeButton).setOnClickListener { startMode(AwakeMode()) }
+        headerBack.setOnClickListener { goBack() }
+        headerClose.setOnClickListener { closeNow() }
+        findViewById<View>(R.id.safetyClose).setOnClickListener { show(homeView) }
+        findViewById<View>(R.id.safetyDetail).setOnClickListener {
+            Toast.makeText(this, "온도·바람·순환·조명·시트를 원래대로 돌려 놓았어요 (지원되는 항목만).", Toast.LENGTH_LONG).show()
         }
 
-        // 버튼 색 / 둥근 모서리 (색 3개: 배경 1B1C20 · 흰색 F6F6F7 · 강조 DCC6AB)
-        proposalCard.round("#1FF6F6F7", 24f, "#33F6F6F7")
-        findViewById<View>(R.id.relaxButton).round("#DCC6AB", 14f)
-        findViewById<View>(R.id.noButton).round("#1B1C20", 14f, "#4DF6F6F7")
-        findViewById<View>(R.id.napButton).round("#1B1C20", 20f, "#66DCC6AB")
-        findViewById<View>(R.id.awakeButton).round("#1B1C20", 20f, "#66DCC6AB")
+        // 카드·버튼 꾸미기 (#1AF6F6F7 = 흰색을 10%만 보이게)
+        listOf(R.id.readyPark, R.id.readyDriver, R.id.readyVehicle,
+            R.id.relaxButton, R.id.napButton, R.id.awakeButton, R.id.safetyCard).forEach {
+            findViewById<View>(it).round("#14F6F6F7", 20f)
+        }
+        listOf(R.id.readyParkIcon, R.id.readyDriverIcon, R.id.readyVehicleIcon,
+            R.id.relaxButtonIcon, R.id.napButtonIcon, R.id.awakeButtonIcon, R.id.safetyIcon).forEach {
+            findViewById<View>(it).round("#1AF6F6F7", 22f)
+        }
+        findViewById<View>(R.id.readyNext).round("#E6F6F6F7", 14f)
+        findViewById<View>(R.id.safetyClose).round("#E6F6F6F7", 14f)
+        findViewById<View>(R.id.safetyDetail).round("#1AF6F6F7", 14f)
+        show(homeView)
     }
 
     // 화면 하나만 보이기
     private fun show(view: View) {
-        homeView.visibility = if (view == homeView || view == proposalCard) View.VISIBLE else View.GONE
-        proposalCard.visibility = if (view == proposalCard) View.VISIBLE else View.GONE
-        modeContainer.visibility = if (view == modeContainer) View.VISIBLE else View.GONE
+        listOf(homeView, readyView, modeSelectView, modeContainer, safetyView).forEach {
+            it.visibility = if (it == view) View.VISIBLE else View.GONE
+        }
+        val onHome = view == homeView
+        headerBack.visibility = if (onHome) View.INVISIBLE else View.VISIBLE
+        headerClose.visibility = View.VISIBLE        // ✕ 는 어느 화면에서나 보여요
+    }
+
+    // ‹ 한 화면 뒤로
+    private fun goBack() {
+        when {
+            currentMode != null -> finishMode("리추얼을 종료했어요.")
+            modeSelectView.visibility == View.VISIBLE -> show(readyView)
+            else -> goHome()
+        }
+    }
+
+    // ✕ 버튼
+    // 리추얼 중간 → 끝내고 홈으로 / 리추얼이 끝난 뒤·홈 화면 → 앱 닫기
+    private fun closeNow() {
+        val mode = currentMode
+        when {
+            mode != null && !mode.isFinished() -> finishMode("리추얼을 종료했어요.")
+            mode != null -> {
+                endMode()                 // 차량 설정 원래대로
+                finishAffinity()          // 앱 닫기
+            }
+            modeSelectView.visibility == View.VISIBLE -> goHome()
+            safetyView.visibility == View.VISIBLE -> goHome()
+            else -> finishAffinity()      // 홈(준비 완료) 화면 → 앱 닫기
+        }
+    }
+
+    // 홈으로: 주차(P) 중이면 "준비 완료" 화면, 주행 중이면 첫 화면
+    // (P인 채로 첫 화면에 가면 누를 버튼이 없어서 멈춘 것처럼 보였어요)
+    private fun goHome() {
+        if (parked == true) {
+            readyParkSub.text = "P단 확인 ✓"
+            show(readyView)
+        } else {
+            show(homeView)
+        }
     }
 
     // ② 모드 시작 / 끝
@@ -124,14 +183,18 @@ class MainActivity : AppCompatActivity() {
         mode.start(host)
     }
 
-    private fun finishMode(message: String) {
+    private fun endMode() {
         currentMode?.stop()
         currentMode = null
         sounds.stopLoop()
         car.restore()                     // 바꿨던 차량 설정을 원래대로
         modeContainer.removeAllViews()
-        show(homeView)
+    }
+
+    private fun finishMode(message: String) {
+        endMode()
         adviceText.text = message
+        goHome()
         speak(message, null)
     }
 
@@ -158,23 +221,25 @@ class MainActivity : AppCompatActivity() {
         if (nowParked) {
             onParked()
         } else {
-            if (currentMode != null) finishMode("출발해서 휴식을 멈췄어요. 안전 운전하세요.")
-            driveStartTime = System.currentTimeMillis()
-            show(homeView)
             statusText.text = "주행 중 (${gear?.name})"
-            adviceText.text = "안전 운전하세요. P에 두면 휴식을 제안할게요."
+            adviceText.text = "안전 운전하세요. P에 두면 SAI가 시작돼요."
+            if (currentMode != null) {
+                endMode()                                           // 안전 중단
+                show(safetyView)
+                speak("차량 상태가 바뀌어 중단했어요. 안전을 위해 모드를 종료했어요.", null)
+            } else {
+                show(homeView)
+            }
         }
     }
 
-    // ④ P가 되면: 휴식 제안 팝업
+    // ④ P가 되면: 준비 완료 화면
     private fun onParked() {
-        val minutes = (System.currentTimeMillis() - driveStartTime) / oneMinute
-        val message = if (minutes < 1) "주차를 마쳤어요. 이브닝 릴렉스 5분, 잠시 쉬어 갈까요?"
-        else "${minutes}분 달렸어요. 이브닝 릴렉스 5분, 잠시 쉬어 갈까요?"
         statusText.text = "주차됨 (P) · $place"
-        proposalTitle.text = message
-        show(proposalCard)
-        speak(message, null)
+        if (currentMode != null) return
+        readyParkSub.text = "P단 확인 ✓"
+        show(readyView)
+        speak("SAI를 시작할 준비가 됐어요. 원하는 모드를 선택해 주세요.", null)
         updateLocation()
     }
 

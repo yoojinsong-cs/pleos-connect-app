@@ -106,7 +106,7 @@
                 android:background="@drawable/bg_card_rounded"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:paddingVertical="40dp">
+                android:paddingVertical="30dp">
 
                 <ImageView
                     android:layout_width="110dp"
@@ -144,7 +144,7 @@
                 android:background="@drawable/bg_card_rounded"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:paddingVertical="40dp">
+                android:paddingVertical="30dp">
 
                 <ImageView
                     android:layout_width="110dp"
@@ -182,7 +182,7 @@
                 android:background="@drawable/bg_card_rounded"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:paddingVertical="40dp">
+                android:paddingVertical="30dp">
 
                 <ImageView
                     android:layout_width="110dp"

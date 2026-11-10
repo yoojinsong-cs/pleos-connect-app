@@ -76,7 +76,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="##################################################################################################"
             android:textColor="#99F6F6F7"
             android:textSize="24sp"
@@ -92,138 +92,123 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center"
-        android:paddingHorizontal="200dp">
+        android:paddingHorizontal="64dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:gravity="center">
 
+            <!-- 10분 -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="20dp">
+                android:id="@+id/card10"
+                android:layout_width="280dp"
+                android:layout_height="220dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_time_card_normal">
 
-                <LinearLayout
-                    android:id="@+id/card10"
-                    android:layout_width="0dp"
-                    android:layout_height="220dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="10dp"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="@drawable/bg_time_card_normal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    android:textColor="#F6F6F7"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10"
-                        android:textColor="#F6F6F7"
-                        android:textSize="60sp"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="분"
-                        android:textColor="#DCC6AB"
-                        android:textSize="32sp"
-                        android:fontFamily="sans-serif"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/card15"
-                    android:layout_width="0dp"
-                    android:layout_height="220dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="10dp"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="@drawable/bg_time_card_normal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="15"
-                        android:textColor="#F6F6F7"
-                        android:textSize="60sp"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="분"
-                        android:textColor="#DCC6AB"
-                        android:textSize="32sp"
-                        android:fontFamily="sans-serif"/>
-                </LinearLayout>
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="분"
+                    android:textColor="#DCC6AB"
+                    android:textSize="32sp"
+                    android:fontFamily="sans-serif"/>
             </LinearLayout>
 
+            <!-- 15분 -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:id="@+id/card15"
+                android:layout_width="280dp"
+                android:layout_height="220dp"
+                android:layout_marginStart="36dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_time_card_normal">
 
-                <LinearLayout
-                    android:id="@+id/card20"
-                    android:layout_width="0dp"
-                    android:layout_height="220dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="10dp"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="@drawable/bg_time_card_normal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15"
+                    android:textColor="#F6F6F7"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="20"
-                        android:textColor="#F6F6F7"
-                        android:textSize="60sp"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="분"
+                    android:textColor="#DCC6AB"
+                    android:textSize="32sp"
+                    android:fontFamily="sans-serif"/>
+            </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="분"
-                        android:textColor="#DCC6AB"
-                        android:textSize="32sp"
-                        android:fontFamily="sans-serif"/>
-                </LinearLayout>
+            <!-- 20분 -->
+            <LinearLayout
+                android:id="@+id/card20"
+                android:layout_width="280dp"
+                android:layout_height="220dp"
+                android:layout_marginStart="36dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_time_card_normal">
 
-                <LinearLayout
-                    android:id="@+id/card30"
-                    android:layout_width="0dp"
-                    android:layout_height="220dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="10dp"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="@drawable/bg_time_card_normal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textColor="#F6F6F7"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="30"
-                        android:textColor="#F6F6F7"
-                        android:textSize="60sp"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="분"
+                    android:textColor="#DCC6AB"
+                    android:textSize="32sp"
+                    android:fontFamily="sans-serif"/>
+            </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="분"
-                        android:textColor="#DCC6AB"
-                        android:textSize="32sp"
-                        android:fontFamily="sans-serif"/>
-                </LinearLayout>
+            <!-- 30분 -->
+            <LinearLayout
+                android:id="@+id/card30"
+                android:layout_width="280dp"
+                android:layout_height="220dp"
+                android:layout_marginStart="36dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_time_card_normal">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30"
+                    android:textColor="#F6F6F7"
+                    android:textSize="60sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="분"
+                    android:textColor="#DCC6AB"
+                    android:textSize="32sp"
+                    android:fontFamily="sans-serif"/>
             </LinearLayout>
 
         </LinearLayout>

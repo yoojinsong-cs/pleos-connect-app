@@ -14,53 +14,47 @@
         <!-- 상단 바 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="112dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingStart="40dp"
-            android:paddingEnd="40dp"
-            android:paddingTop="28dp"
-            android:paddingBottom="28dp">
+            android:paddingHorizontal="28dp">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/tvBack"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/ic_back"
+                android:contentDescription="뒤로가기" />
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="16dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="SAI"
+                android:src="@drawable/sai_logo" />
+
+            <View
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:id="@+id/tvBack"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:src="@drawable/ic_back"
-                    android:contentDescription="뒤로가기"
-                    android:layout_marginEnd="16dp"/>
-
-                <ImageView
-                    android:layout_width="174dp"
-                    android:layout_height="42dp"
-                    android:src="@drawable/sai_logo"
-                    android:contentDescription="SAI"/>
-
-            </LinearLayout>
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
             <ImageButton
                 android:id="@+id/btnMute"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
                 android:src="@drawable/ic_volume_on"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="음소거"/>
+                android:layout_marginEnd="0dp"
+                android:contentDescription="음소거" />
 
             <ImageView
                 android:id="@+id/btnClose"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:src="@drawable/ic_close"
-                android:contentDescription="닫기"/>
+                android:contentDescription="닫기" />
 
         </LinearLayout>
 
@@ -70,8 +64,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:paddingStart="120dp"
-            android:paddingEnd="120dp"
+            android:paddingHorizontal="64dp"
             android:paddingTop="28dp">
 
             <TextView
@@ -83,7 +76,7 @@
                 android:textSize="22sp"
                 android:letterSpacing="0.2"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"/>
+                android:fontFamily="sans-serif" />
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -95,18 +88,18 @@
                 android:textSize="48sp"
                 android:fontFamily="sans-serif"
                 android:textStyle="bold"
-                android:gravity="center"/>
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/tvSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="안내 음성은 잠시 후 종료돼요."
                 android:textColor="#99F6F6F7"
                 android:textSize="24sp"
                 android:fontFamily="sans-serif"
-                android:gravity="center"/>
+                android:gravity="center" />
 
         </LinearLayout>
 
@@ -117,8 +110,7 @@
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
-            android:paddingStart="120dp"
-            android:paddingEnd="120dp">
+            android:paddingHorizontal="64dp">
 
             <Button
                 android:id="@+id/btnAsmrSelect"
@@ -133,7 +125,7 @@
                 android:paddingStart="28dp"
                 android:paddingEnd="28dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieView"
@@ -142,7 +134,7 @@
                 android:layout_gravity="center"
                 app:lottie_rawRes="@raw/sai_nap_loop"
                 app:lottie_autoPlay="true"
-                app:lottie_loop="true"/>
+                app:lottie_loop="true" />
 
         </LinearLayout>
 
@@ -172,7 +164,7 @@
                     android:text="진행 시간"
                     android:textColor="#B3F6F6F7"
                     android:textSize="20sp"
-                    android:fontFamily="sans-serif"/>
+                    android:fontFamily="sans-serif" />
 
                 <TextView
                     android:id="@+id/tvPhaseLabelBottom"
@@ -182,7 +174,7 @@
                     android:textColor="#DCC6AB"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:fontFamily="sans-serif"/>
+                    android:fontFamily="sans-serif" />
 
             </LinearLayout>
 
@@ -200,7 +192,7 @@
                     android:text="00:00"
                     android:textColor="#F6F6F7"
                     android:textSize="36sp"
-                    android:fontFamily="sans-serif"/>
+                    android:fontFamily="sans-serif" />
 
                 <TextView
                     android:id="@+id/tvTotalTime"
@@ -212,7 +204,7 @@
                     android:text="/ 20:00"
                     android:textColor="#80F6F6F7"
                     android:textSize="20sp"
-                    android:fontFamily="sans-serif"/>
+                    android:fontFamily="sans-serif" />
 
                 <TextView
                     android:id="@+id/tvPhasePercent"
@@ -223,7 +215,7 @@
                     android:textColor="#DCC6AB"
                     android:textSize="36sp"
                     android:textStyle="bold"
-                    android:fontFamily="sans-serif"/>
+                    android:fontFamily="sans-serif" />
 
             </LinearLayout>
 
@@ -237,7 +229,7 @@
                 android:paddingEnd="0dp"
                 android:progressBackgroundTint="#33F6F6F7"
                 android:progressTint="#DCC6AB"
-                android:thumbTint="#DCC6AB"/>
+                android:thumbTint="#DCC6AB" />
 
         </LinearLayout>
 
@@ -250,6 +242,6 @@
         android:layout_height="match_parent"
         android:background="#000000"
         android:alpha="0"
-        android:clickable="false"/>
+        android:clickable="false" />
 
 </FrameLayout>

@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="직접 조절하기"
+            android:text="본인에게 편한 환경으로 조절하세요"
             android:textColor="#F6F6F7"
             android:textSize="48sp"
             android:textStyle="bold"

@@ -131,6 +131,14 @@ class NappingActivity : FragmentActivity() {
         mediaPlayer = null
     }
 
+    // ── 알람 ───────────────────────────────────
+
+    private fun playAlarm() {
+        val alarm = MediaPlayer.create(this, R.raw.alarm)
+        alarm.setOnCompletionListener { mp -> mp.release() }
+        alarm.start()
+    }
+
     // ── TTS ───────────────────────────────────
 
     private fun initTts() {
@@ -186,7 +194,11 @@ class NappingActivity : FragmentActivity() {
                 0 -> { setScreenBrightness(0.08f); speak("눈을 감고 편안하게 쉬세요") }
                 1 -> { setScreenBrightness(0.02f); speak("편안하게 쉬세요") }
                 2 -> { setScreenBrightness(0.3f); speak("천천히 깨어날 시간이에요") }
-                3 -> { setScreenBrightness(WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE); speak("곧 완전히 깨어납니다") }
+                3 -> {
+                    setScreenBrightness(WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE)
+                    speak("곧 완전히 깨어납니다")
+                    playAlarm()
+                }
             }
         }
 

@@ -53,7 +53,8 @@
                 android:src="@drawable/ic_volume_on"
                 android:background="@android:color/transparent"
                 android:scaleType="fitCenter"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="8dp"
+                android:contentDescription="음소거"/>
 
             <TextView
                 android:id="@+id/btnClose"

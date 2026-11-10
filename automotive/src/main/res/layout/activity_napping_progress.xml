@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -40,7 +41,6 @@
 
         </LinearLayout>
 
-        <!-- 스피커 아이콘 버튼 -->
         <ImageButton
             android:id="@+id/btnMute"
             android:layout_width="64dp"
@@ -103,7 +103,6 @@
             android:gravity="center"
             android:layout_marginTop="8dp"/>
 
-        <!-- ASMR 드롭다운: subtitle과 파티클 사이 -->
         <Button
             android:id="@+id/btnAsmrSelect"
             android:layout_width="wrap_content"
@@ -119,11 +118,14 @@
             android:layout_marginTop="28dp"
             android:layout_marginBottom="20dp"/>
 
-        <com.example.myapplication.ParticleView
-            android:id="@+id/particleView"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieView"
             android:layout_width="400dp"
             android:layout_height="400dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/sai_nap_loop"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true" />
 
     </LinearLayout>
 

@@ -55,6 +55,7 @@ dependencies {
     implementation("ai.pleos.playground:Vehicle:2.3.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("ai.pleos.playground:TextToSpeech:3.3.1")
+    implementation("com.airbnb.android:lottie:6.3.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

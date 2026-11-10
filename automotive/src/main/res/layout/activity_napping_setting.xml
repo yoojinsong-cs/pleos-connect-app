@@ -94,15 +94,15 @@
 
         <!-- 카드 3개 -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <!-- 조명 -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="330dp"
+                android:layout_height="280dp"
                 android:background="@drawable/bg_card_rounded"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
@@ -138,10 +138,9 @@
 
             <!-- 바람 -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_weight="1"
+                android:layout_width="330dp"
+                android:layout_height="280dp"
+                android:layout_marginStart="36dp"
                 android:background="@drawable/bg_card_rounded"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
@@ -177,10 +176,9 @@
 
             <!-- 등받이 -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_weight="1"
+                android:layout_width="330dp"
+                android:layout_height="280dp"
+                android:layout_marginStart="36dp"
                 android:background="@drawable/bg_card_rounded"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"

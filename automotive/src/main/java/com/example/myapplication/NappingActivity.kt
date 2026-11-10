@@ -14,7 +14,7 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.PopupMenu
-import android.widget.ProgressBar
+import android.widget.SeekBar
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import java.util.Locale
@@ -192,7 +192,8 @@ class NappingActivity : FragmentActivity() {
         findViewById<TextView>(R.id.tvElapsed).text = "%02d:%02d".format(minutes, seconds)
         findViewById<TextView>(R.id.tvTotalTime).text = " / %02d:00".format(totalMin)
         findViewById<TextView>(R.id.tvPhasePercent).text = "${percent}%"
-        findViewById<ProgressBar>(R.id.progressBar).progress = percent
+        findViewById<SeekBar>(R.id.progressBar).progress = percent
+        findViewById<TextView>(R.id.tvPhaseLabelBottom).text = phase.label
     }
 
     override fun onDestroy() {

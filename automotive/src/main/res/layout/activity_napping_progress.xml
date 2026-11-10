@@ -151,101 +151,98 @@
 
         </LinearLayout>
 
-        <!-- 하단 진행 카드 -->
+        <!-- 하단 진행 -->
         <LinearLayout
+            android:id="@+id/nappingProgress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/bg_card_rounded"
-            android:padding="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="24dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
             android:layout_marginBottom="64dp"
-            android:gravity="center_vertical">
+            android:background="@drawable/bg_card_rounded">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="진행 시간"
-                    android:textColor="#DCC6AB"
-                    android:textSize="28sp"
-                    android:fontFamily="sans-serif"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="8dp">
-
-                    <TextView
-                        android:id="@+id/tvElapsed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="00:00"
-                        android:textColor="#F6F6F7"
-                        android:textSize="52sp"
-                        android:fontFamily="sans-serif"/>
-
-                    <TextView
-                        android:id="@+id/tvTotalTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" / 20:00"
-                        android:textColor="#DCC6AB"
-                        android:textSize="36sp"
-                        android:fontFamily="sans-serif"
-                        android:layout_marginStart="8dp"/>
-
-                </LinearLayout>
-
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_marginTop="16dp"
-                    android:max="100"
-                    android:progress="0"
-                    android:progressTint="#DCC6AB"
-                    android:progressBackgroundTint="#27292E"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="end"
-                android:layout_marginStart="40dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tvPhaseInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="진행 시간"
+                    android:textColor="#B3F6F6F7"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"/>
+
+                <TextView
+                    android:id="@+id/tvPhaseLabelBottom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="수면 진입"
                     android:textColor="#DCC6AB"
-                    android:textSize="28sp"
-                    android:fontFamily="sans-serif"
-                    android:layout_gravity="end"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvElapsed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textColor="#F6F6F7"
+                    android:textSize="36sp"
+                    android:fontFamily="sans-serif"/>
+
+                <TextView
+                    android:id="@+id/tvTotalTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="/ 20:00"
+                    android:textColor="#80F6F6F7"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif"/>
 
                 <TextView
                     android:id="@+id/tvPhasePercent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
                     android:text="0%"
-                    android:textColor="#F6F6F7"
-                    android:textSize="52sp"
-                    android:fontFamily="sans-serif"
-                    android:layout_marginTop="8dp"/>
+                    android:textColor="#DCC6AB"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"/>
 
             </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:max="100"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp"
+                android:progressBackgroundTint="#33F6F6F7"
+                android:progressTint="#DCC6AB"
+                android:thumbTint="#DCC6AB"/>
 
         </LinearLayout>
 

@@ -9,13 +9,10 @@
     <!-- 상단 바 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="112dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
-        android:paddingTop="28dp"
-        android:paddingBottom="28dp">
+        android:paddingHorizontal="28dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -26,13 +23,13 @@
 
             <TextView
                 android:id="@+id/tvBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="〈"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:text="‹"
                 android:textColor="#F6F6F7"
-                android:textSize="48sp"
+                android:textSize="56sp"
                 android:fontFamily="sans-serif"
-                android:layout_marginEnd="16dp"/>
+                android:gravity="center"/>
 
             <ImageView
                 android:layout_width="174dp"
@@ -46,8 +43,8 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:text="✕"
-            android:textColor="#DCC6AB"
-            android:textSize="48sp"
+            android:textColor="#F6F6F7"
+            android:textSize="40sp"
             android:fontFamily="sans-serif"
             android:gravity="center"/>
 
@@ -60,29 +57,40 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center"
-        android:paddingStart="80dp"
-        android:paddingEnd="80dp">
+        android:paddingHorizontal="64dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAPPING · TIME"
+            android:textColor="#DCC6AB"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.2"
+            android:fontFamily="sans-serif"
+            android:layout_gravity="center"
+            android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="얼마나 쉬실 건가요?"
             android:textColor="#F6F6F7"
-            android:textSize="64sp"
+            android:textSize="48sp"
             android:textStyle="bold"
             android:fontFamily="sans-serif"
             android:layout_gravity="center"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="낮잠 시간을 선택해주세요"
-            android:textColor="#DCC6AB"
-            android:textSize="32sp"
+            android:textColor="#99F6F6F7"
+            android:textSize="24sp"
             android:fontFamily="sans-serif"
             android:layout_gravity="center"
-            android:layout_marginBottom="60dp"/>
+            android:layout_marginBottom="48dp"/>
 
         <!-- 시간 선택 카드 2x2 -->
         <LinearLayout
@@ -90,7 +98,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Row 1 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -155,7 +162,6 @@
 
             </LinearLayout>
 
-            <!-- Row 2 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -221,27 +227,24 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+        <!-- 하단 시작 버튼 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp">
 
-    <!-- 하단 시작 버튼 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:paddingTop="40dp"
-        android:paddingBottom="80dp">
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:text="낮잠 시작하기"
+                android:textColor="#1B1C20"
+                android:textSize="26sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:backgroundTint="#E1E1E1"/>
 
-        <Button
-            android:id="@+id/btnStart"
-            android:layout_width="600dp"
-            android:layout_height="100dp"
-            android:text="낮잠 시작하기"
-            android:textColor="#1B1C20"
-            android:textSize="40sp"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
-            android:backgroundTint="#E1E1E1"/>
+        </LinearLayout>
 
     </LinearLayout>
 

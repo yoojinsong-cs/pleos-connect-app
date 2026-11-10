@@ -32,6 +32,7 @@
                 android:text="〈"
                 android:textColor="#F6F6F7"
                 android:textSize="48sp"
+                android:fontFamily="sans-serif"
                 android:layout_marginEnd="16dp"/>
 
             <ImageView
@@ -57,6 +58,7 @@
             android:text="✕"
             android:textColor="#DCC6AB"
             android:textSize="48sp"
+            android:fontFamily="sans-serif"
             android:gravity="center"/>
 
     </LinearLayout>
@@ -79,6 +81,7 @@
             android:textColor="#DCC6AB"
             android:textSize="32sp"
             android:letterSpacing="0.15"
+            android:fontFamily="sans-serif"
             android:layout_gravity="center"/>
 
         <TextView
@@ -88,6 +91,8 @@
             android:text="눈을 감고 편안하게 쉬세요"
             android:textColor="#F6F6F7"
             android:textSize="80sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="10dp"/>
@@ -99,6 +104,7 @@
             android:text="안내 음성은 잠시 후 종료돼요."
             android:textColor="#DCC6AB"
             android:textSize="40sp"
+            android:fontFamily="sans-serif"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_marginTop="8dp"/>
@@ -111,6 +117,7 @@
             android:textColor="#DCC6AB"
             android:textSize="26sp"
             android:letterSpacing="0.05"
+            android:fontFamily="sans-serif"
             android:background="@drawable/bg_dropdown"
             android:paddingStart="28dp"
             android:paddingEnd="28dp"
@@ -152,7 +159,8 @@
                 android:layout_height="wrap_content"
                 android:text="진행 시간"
                 android:textColor="#DCC6AB"
-                android:textSize="28sp"/>
+                android:textSize="28sp"
+                android:fontFamily="sans-serif"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -167,7 +175,8 @@
                     android:layout_height="wrap_content"
                     android:text="00:00"
                     android:textColor="#F6F6F7"
-                    android:textSize="52sp"/>
+                    android:textSize="52sp"
+                    android:fontFamily="sans-serif"/>
 
                 <TextView
                     android:id="@+id/tvTotalTime"
@@ -176,6 +185,7 @@
                     android:text=" / 20:00"
                     android:textColor="#DCC6AB"
                     android:textSize="36sp"
+                    android:fontFamily="sans-serif"
                     android:layout_marginStart="8dp"/>
 
             </LinearLayout>
@@ -207,6 +217,7 @@
                 android:text="수면 진입"
                 android:textColor="#DCC6AB"
                 android:textSize="28sp"
+                android:fontFamily="sans-serif"
                 android:layout_gravity="end"/>
 
             <TextView
@@ -216,6 +227,7 @@
                 android:text="0%"
                 android:textColor="#F6F6F7"
                 android:textSize="52sp"
+                android:fontFamily="sans-serif"
                 android:layout_marginTop="8dp"/>
 
         </LinearLayout>

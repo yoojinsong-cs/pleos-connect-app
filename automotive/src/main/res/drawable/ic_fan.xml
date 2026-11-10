@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="63dp"
-    android:height="63dp"
-    android:viewportWidth="63"
-    android:viewportHeight="63">
-
+    android:width="66dp"
+    android:height="67dp"
+    android:viewportWidth="66"
+    android:viewportHeight="67">
     <path
-        android:pathData="M36.5615 30.0371C30.8615 28.1371 27.0615 20.5371 29.9115 10.0871C32.7615 0.587116 43.2115 -0.362884 47.0115 6.28712C50.8115 13.8871 45.1115 24.3371 36.5615 30.0371ZM38.4615 33.8371C46.0615 31.9371 55.5615 35.7371 59.3615 44.2871C64.1115 54.7371 55.5615 63.2871 47.0115 60.4371C38.4615 56.6371 35.6115 43.3371 38.4615 33.8371ZM33.7115 32.8871C28.9615 40.4871 19.4615 45.2371 9.0115 40.4871C-0.488496 35.7371 0.461504 25.2871 7.1115 21.4871C15.6615 16.7371 27.0615 24.3371 33.7115 32.8871Z"
+        android:pathData="M38.3805 31.5127C32.3805 29.5127 28.3805 21.5127 31.3805 10.5127C34.3805 0.512718 45.3805 -0.487281 49.3805 6.51272C53.3805 14.5127 47.3805 25.5127 38.3805 31.5127ZM40.3805 35.5127C48.3805 33.5127 58.3805 37.5127 62.3805 46.5127C67.3805 57.5127 58.3805 66.5127 49.3805 63.5127C40.3805 59.5127 37.3805 45.5127 40.3805 35.5127ZM35.3805 34.5127C30.3805 42.5127 20.3805 47.5127 9.38053 42.5127C-0.619469 37.5127 0.380531 26.5127 7.38053 22.5127C16.3805 17.5127 28.3805 25.5127 35.3805 34.5127Z"
         android:strokeWidth="4"
+        android:strokeColor="#AEB1B9"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:strokeColor="#AEB1B9"
         android:fillColor="@android:color/transparent"/>
-
+    <path
+        android:pathData="M43.3805 33.5127C43.3805 36.2741 41.1419 38.5127 38.3805 38.5127C35.6191 38.5127 33.3805 36.2741 33.3805 33.5127C33.3805 30.7513 35.6191 28.5127 38.3805 28.5127C41.1419 28.5127 43.3805 30.7513 43.3805 33.5127Z"
+        android:strokeWidth="4"
+        android:strokeColor="#AEB1B9"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="@android:color/transparent"/>
 </vector>

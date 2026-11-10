@@ -108,15 +108,13 @@
                 android:orientation="vertical"
                 android:paddingVertical="40dp">
 
-                <TextView
+                <ImageView
                     android:layout_width="110dp"
                     android:layout_height="110dp"
                     android:background="@drawable/bg_icon_rounded"
-                    android:gravity="center"
-                    android:text="☼"
-                    android:textColor="#DCC6AB"
-                    android:textSize="34sp"
-                    android:fontFamily="sans-serif" />
+                    android:src="@drawable/ic_light"
+                    android:padding="24dp"
+                    android:contentDescription="조명" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -149,15 +147,13 @@
                 android:orientation="vertical"
                 android:paddingVertical="40dp">
 
-                <TextView
+                <ImageView
                     android:layout_width="110dp"
                     android:layout_height="110dp"
                     android:background="@drawable/bg_icon_rounded"
-                    android:gravity="center"
-                    android:text="≋"
-                    android:textColor="#DCC6AB"
-                    android:textSize="34sp"
-                    android:fontFamily="sans-serif" />
+                    android:src="@drawable/ic_fan"
+                    android:padding="24dp"
+                    android:contentDescription="바람" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -190,15 +186,13 @@
                 android:orientation="vertical"
                 android:paddingVertical="40dp">
 
-                <TextView
+                <ImageView
                     android:layout_width="110dp"
                     android:layout_height="110dp"
                     android:background="@drawable/bg_icon_rounded"
-                    android:gravity="center"
-                    android:text="⌒"
-                    android:textColor="#DCC6AB"
-                    android:textSize="34sp"
-                    android:fontFamily="sans-serif" />
+                    android:src="@drawable/ic_seat"
+                    android:padding="24dp"
+                    android:contentDescription="등받이" />
 
                 <TextView
                     android:layout_width="wrap_content"

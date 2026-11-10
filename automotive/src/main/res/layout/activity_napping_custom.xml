@@ -146,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:text="소등"
                         android:textColor="#DCC6AB"
-                        android:textSize="48sp"
+                        android:textSize="40sp"
                         android:fontFamily="sans-serif"/>
                 </LinearLayout>
 
@@ -227,7 +227,7 @@
                         android:layout_height="wrap_content"
                         android:text="낮음"
                         android:textColor="#DCC6AB"
-                        android:textSize="48sp"
+                        android:textSize="40sp"
                         android:fontFamily="sans-serif"/>
                 </LinearLayout>
 
@@ -306,7 +306,7 @@
                         android:layout_height="wrap_content"
                         android:text="130°"
                         android:textColor="#DCC6AB"
-                        android:textSize="48sp"
+                        android:textSize="40sp"
                         android:fontFamily="sans-serif"/>
                 </LinearLayout>
 

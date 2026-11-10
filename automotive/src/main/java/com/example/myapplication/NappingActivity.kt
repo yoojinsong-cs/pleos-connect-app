@@ -25,16 +25,14 @@ class NappingActivity : FragmentActivity() {
     private var elapsedSeconds = 0
     private val handler = Handler(Looper.getMainLooper())
 
-    // TTS
     private lateinit var tts: TextToSpeech
     private var ttsReady = false
 
-    // ASMR
     private var mediaPlayer: MediaPlayer? = null
+    private var alarmPlayer: MediaPlayer? = null
     private var isMuted = false
     private var currentAsmr = R.raw.asmr1
 
-    // 페이즈
     private var currentPhaseIndex = -1
 
     data class Phase(
@@ -110,8 +108,6 @@ class NappingActivity : FragmentActivity() {
         updateUI()
     }
 
-    // ── ASMR ──────────────────────────────────
-
     private fun startAsmr(resId: Int) {
         mediaPlayer?.release()
         mediaPlayer = MediaPlayer.create(this, resId).apply {
@@ -131,15 +127,12 @@ class NappingActivity : FragmentActivity() {
         mediaPlayer = null
     }
 
-    // ── 알람 ───────────────────────────────────
-
     private fun playAlarm() {
-        val alarm = MediaPlayer.create(this, R.raw.alarm)
-        alarm.setOnCompletionListener { mp -> mp.release() }
-        alarm.start()
+        alarmPlayer?.release()
+        alarmPlayer = MediaPlayer.create(this, R.raw.alarm)
+        alarmPlayer?.setOnCompletionListener { mp -> mp.release() }
+        alarmPlayer?.start()
     }
-
-    // ── TTS ───────────────────────────────────
 
     private fun initTts() {
         tts = TextToSpeech(applicationContext, Mode.ON_DEVICE)
@@ -165,8 +158,6 @@ class NappingActivity : FragmentActivity() {
         if (ttsReady) tts.speak(text)
     }
 
-    // ── 화면 밝기 ──────────────────────────────
-
     private fun setScreenBrightness(brightness: Float) {
         val params = window.attributes
         params.screenBrightness = brightness
@@ -180,8 +171,6 @@ class NappingActivity : FragmentActivity() {
             findViewById<View>(R.id.brightnessOverlay)?.alpha = alpha
         }
     }
-
-    // ── UI 업데이트 ────────────────────────────
 
     private fun updateUI() {
         val percent = (elapsedSeconds * 100 / totalSeconds)
@@ -216,12 +205,12 @@ class NappingActivity : FragmentActivity() {
         findViewById<ProgressBar>(R.id.progressBar).progress = percent
     }
 
-    // ── 생명주기 ───────────────────────────────
-
     override fun onDestroy() {
         super.onDestroy()
         handler.removeCallbacks(ticker)
         stopAsmr()
+        alarmPlayer?.release()
+        alarmPlayer = null
         if (ttsReady) {
             tts.stop()
             tts.release()

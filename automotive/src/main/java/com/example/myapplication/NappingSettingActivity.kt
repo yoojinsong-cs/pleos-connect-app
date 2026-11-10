@@ -3,7 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.fragment.app.FragmentActivity
 
 class NappingSettingActivity : FragmentActivity() {
@@ -14,8 +14,8 @@ class NappingSettingActivity : FragmentActivity() {
 
         val totalSeconds = intent.getIntExtra("TOTAL_SECONDS", 20 * 60)
 
-        findViewById<TextView>(R.id.tvBack).setOnClickListener { finish() }
-        findViewById<TextView>(R.id.btnClose).setOnClickListener {
+        findViewById<ImageView>(R.id.tvBack).setOnClickListener { finish() }
+        findViewById<ImageView>(R.id.btnClose).setOnClickListener {
             finishAffinity()
             System.exit(0)
         }

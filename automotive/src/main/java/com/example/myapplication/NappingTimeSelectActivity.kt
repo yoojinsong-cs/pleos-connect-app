@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
@@ -16,8 +17,8 @@ class NappingTimeSelectActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_napping_time_select)
 
-        findViewById<TextView>(R.id.tvBack).setOnClickListener { finish() }
-        findViewById<TextView>(R.id.btnClose).setOnClickListener {
+        findViewById<ImageView>(R.id.tvBack).setOnClickListener { finish() }
+        findViewById<ImageView>(R.id.btnClose).setOnClickListener {
             finishAffinity()
             System.exit(0)
         }

@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
@@ -21,8 +22,8 @@ class NappingCustomActivity : FragmentActivity() {
         val tvFanValue   = findViewById<TextView>(R.id.tvFanValue)
         val tvSeatValue  = findViewById<TextView>(R.id.tvSeatValue)
 
-        findViewById<TextView>(R.id.tvBack).setOnClickListener { finish() }
-        findViewById<TextView>(R.id.btnClose).setOnClickListener {
+        findViewById<ImageView>(R.id.tvBack).setOnClickListener { finish() }
+        findViewById<ImageView>(R.id.btnClose).setOnClickListener {
             finishAffinity()
             System.exit(0)
         }

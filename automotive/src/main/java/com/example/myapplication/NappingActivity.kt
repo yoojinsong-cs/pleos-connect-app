@@ -13,6 +13,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.SeekBar
 import android.widget.TextView
@@ -68,8 +69,8 @@ class NappingActivity : FragmentActivity() {
 
         totalSeconds = intent.getIntExtra("TOTAL_SECONDS", 20 * 60)
 
-        findViewById<TextView>(R.id.tvBack).setOnClickListener { finish() }
-        findViewById<TextView>(R.id.btnClose).setOnClickListener {
+        findViewById<ImageView>(R.id.tvBack).setOnClickListener { finish() }
+        findViewById<ImageView>(R.id.btnClose).setOnClickListener {
             finishAffinity()
             System.exit(0)
         }
@@ -171,9 +172,9 @@ class NappingActivity : FragmentActivity() {
         if (phaseIndex != currentPhaseIndex) {
             currentPhaseIndex = phaseIndex
             when (phaseIndex) {
-                0 -> { setScreenBrightness(0.7f);  speak("눈을 감고 편안하게 쉬세요") }
-                1 -> { setScreenBrightness(0.5f);  }
-                2 -> { setScreenBrightness(0.7f);  speak("천천히 깨어날 시간이에요") }
+                0 -> { setScreenBrightness(0.7f); speak("눈을 감고 편안하게 쉬세요") }
+                1 -> { setScreenBrightness(0.5f) }
+                2 -> { setScreenBrightness(0.7f); speak("천천히 깨어날 시간이에요") }
                 3 -> {
                     setScreenBrightness(WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE)
                     speak("곧 완전히 깨어납니다")

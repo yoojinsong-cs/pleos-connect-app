@@ -4,100 +4,105 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#1B1C20"
-    android:gravity="center">
+    android:background="#1B1C20">
 
     <!-- 상단 바 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="112dp"
         android:gravity="center_vertical"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
-        android:paddingTop="28dp"
-        android:paddingBottom="28dp"
-        android:layout_gravity="top">
+        android:orientation="horizontal"
+        android:paddingHorizontal="28dp">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvBack"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:text="‹"
+            android:textColor="#F6F6F7"
+            android:textSize="56sp"
+            android:fontFamily="sans-serif" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="SAI"
+            android:src="@drawable/sai_logo" />
+
+        <View
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/tvBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="〈"
-                android:textColor="#F6F6F7"
-                android:textSize="48sp"
-                android:layout_marginEnd="16dp"/>
-
-            <ImageView
-                android:layout_width="174dp"
-                android:layout_height="42dp"
-                android:src="@drawable/sai_logo"/>
-
-        </LinearLayout>
+            android:layout_height="1dp"
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/btnClose"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:gravity="center"
             android:text="✕"
-            android:textColor="#DCC6AB"
-            android:textSize="48sp"
-            android:gravity="center"/>
+            android:textColor="#F6F6F7"
+            android:textSize="40sp"
+            android:fontFamily="sans-serif" />
     </LinearLayout>
 
-    <!-- 중앙 콘텐츠 -->
+    <!-- 상단바 26dp 아래 고정 헤더 텍스트 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingHorizontal="64dp"
+        android:paddingTop="26dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAPPING · CUSTOM"
+            android:textColor="#DCC6AB"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.2"
+            android:fontFamily="sans-serif" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="직접 조절하기"
+            android:textColor="#F6F6F7"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="원하는 대로 설정을 조절해요."
+            android:textColor="#99F6F6F7"
+            android:textSize="24sp"
+            android:fontFamily="sans-serif" />
+
+    </LinearLayout>
+
+    <!-- 카드 영역 중앙 정렬 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center"
-        android:paddingStart="120dp"
-        android:paddingEnd="120dp">
+        android:paddingHorizontal="64dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RELAX · PREPARE"
-            android:textColor="#DCC6AB"
-            android:textSize="32sp"
-            android:letterSpacing="0.15"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="직접 조절하기"
-            android:textColor="#F6F6F7"
-            android:textSize="80sp"
-            android:fontFamily="sans-serif-light"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="원하는 대로 설정을 조절해요."
-            android:textColor="#DCC6AB"
-            android:textSize="40sp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="8dp"/>
-
-        <!-- 카드 3개 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="550dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="60dp">
+            android:orientation="horizontal">
 
             <!-- 조명 카드 -->
             <LinearLayout
@@ -115,19 +120,25 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
-                    <ImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:src="@drawable/ic_light"
+                    <TextView
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:background="@drawable/bg_icon_rounded"
+                        android:gravity="center"
+                        android:text="☼"
+                        android:textColor="#DCC6AB"
+                        android:textSize="34sp"
+                        android:fontFamily="sans-serif"
                         android:layout_marginEnd="16dp"/>
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="앰비언트 조명"
+                        android:text="조명"
                         android:textColor="#F6F6F7"
-                        android:textSize="48sp"/>
+                        android:textSize="48sp"
+                        android:fontFamily="sans-serif"/>
 
                     <TextView
                         android:id="@+id/tvLightValue"
@@ -135,7 +146,8 @@
                         android:layout_height="wrap_content"
                         android:text="소등"
                         android:textColor="#DCC6AB"
-                        android:textSize="48sp"/>
+                        android:textSize="48sp"
+                        android:fontFamily="sans-serif"/>
                 </LinearLayout>
 
                 <SeekBar
@@ -159,13 +171,15 @@
                         android:layout_weight="1"
                         android:text="소등"
                         android:textColor="#7A8FAA"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp"
+                        android:fontFamily="sans-serif"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="최대"
                         android:textColor="#7A8FAA"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp"
+                        android:fontFamily="sans-serif"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -178,8 +192,8 @@
                 android:gravity="center"
                 android:background="@drawable/bg_card_rounded"
                 android:padding="32dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp">
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -187,19 +201,25 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
-                    <ImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:src="@drawable/ic_fan"
+                    <TextView
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:background="@drawable/bg_icon_rounded"
+                        android:gravity="center"
+                        android:text="≋"
+                        android:textColor="#DCC6AB"
+                        android:textSize="34sp"
+                        android:fontFamily="sans-serif"
                         android:layout_marginEnd="16dp"/>
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="공조 풍량"
+                        android:text="바람"
                         android:textColor="#F6F6F7"
-                        android:textSize="48sp"/>
+                        android:textSize="48sp"
+                        android:fontFamily="sans-serif"/>
 
                     <TextView
                         android:id="@+id/tvFanValue"
@@ -207,7 +227,8 @@
                         android:layout_height="wrap_content"
                         android:text="낮음"
                         android:textColor="#DCC6AB"
-                        android:textSize="48sp"/>
+                        android:textSize="48sp"
+                        android:fontFamily="sans-serif"/>
                 </LinearLayout>
 
                 <SeekBar
@@ -231,13 +252,15 @@
                         android:layout_weight="1"
                         android:text="끔"
                         android:textColor="#7A8FAA"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp"
+                        android:fontFamily="sans-serif"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="최대"
                         android:textColor="#7A8FAA"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp"
+                        android:fontFamily="sans-serif"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -257,19 +280,25 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
-                    <ImageView
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:src="@drawable/ic_seat"
+                    <TextView
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:background="@drawable/bg_icon_rounded"
+                        android:gravity="center"
+                        android:text="⌒"
+                        android:textColor="#DCC6AB"
+                        android:textSize="34sp"
+                        android:fontFamily="sans-serif"
                         android:layout_marginEnd="16dp"/>
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="시트 각도"
+                        android:text="등받이"
                         android:textColor="#F6F6F7"
-                        android:textSize="48sp"/>
+                        android:textSize="48sp"
+                        android:fontFamily="sans-serif"/>
 
                     <TextView
                         android:id="@+id/tvSeatValue"
@@ -277,7 +306,8 @@
                         android:layout_height="wrap_content"
                         android:text="130°"
                         android:textColor="#DCC6AB"
-                        android:textSize="48sp"/>
+                        android:textSize="48sp"
+                        android:fontFamily="sans-serif"/>
                 </LinearLayout>
 
                 <SeekBar
@@ -301,50 +331,53 @@
                         android:layout_weight="1"
                         android:text="100°"
                         android:textColor="#7A8FAA"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp"
+                        android:fontFamily="sans-serif"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="160°"
                         android:textColor="#7A8FAA"
-                        android:textSize="36sp"/>
+                        android:textSize="36sp"
+                        android:fontFamily="sans-serif"/>
                 </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
 
-        <!-- 버튼 2개 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="60dp"
-            android:layout_marginStart="280dp"
-            android:layout_marginEnd="280dp">
+    </LinearLayout>
 
-            <Button
-                android:id="@+id/btnStart"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="2"
-                android:text="이 설정으로 시작하기"
-                android:textColor="#1B1C20"
-                android:textSize="36sp"
-                android:backgroundTint="#F6F6F7"/>
+    <!-- 버튼 2개: 하단 64dp 고정 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="64dp"
+        android:paddingBottom="64dp">
 
-            <Button
-                android:id="@+id/btnBack"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:layout_marginStart="16dp"
-                android:text="돌아가기"
-                android:textColor="#F6F6F7"
-                android:textSize="36sp"
-                android:backgroundTint="#27292E"
-                android:background="@drawable/bg_button_secondary"/>
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="0dp"
+            android:layout_height="96dp"
+            android:layout_weight="1"
+            android:text="이 설정으로 시작하기"
+            android:textColor="#1B1C20"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:backgroundTint="#E1E1E1"/>
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="0dp"
+            android:layout_height="96dp"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:text="돌아가기"
+            android:textColor="#F6F6F7"
+            android:textSize="26sp"
+            android:fontFamily="sans-serif"
+            android:backgroundTint="#27292E"/>
 
     </LinearLayout>
 

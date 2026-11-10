@@ -20,7 +20,8 @@
             android:gravity="center"
             android:text="‹"
             android:textColor="#F6F6F7"
-            android:textSize="56sp" />
+            android:textSize="56sp"
+            android:fontFamily="sans-serif" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -42,17 +43,18 @@
             android:gravity="center"
             android:text="✕"
             android:textColor="#F6F6F7"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            android:fontFamily="sans-serif" />
     </LinearLayout>
 
-    <!-- 중앙 콘텐츠 -->
+    <!-- 상단바 26dp 아래 고정 헤더 텍스트 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingHorizontal="64dp">
+        android:gravity="center_horizontal"
+        android:paddingHorizontal="64dp"
+        android:paddingTop="26dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,7 +63,8 @@
             android:text="NAPPING · PREPARE"
             android:textColor="#DCC6AB"
             android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="sans-serif" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -71,7 +74,8 @@
             android:text="냅핑 시작 전 환경을 확인해 주세요"
             android:textColor="#F6F6F7"
             android:textSize="48sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="sans-serif" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,13 +84,24 @@
             android:gravity="center"
             android:text="설정을 확인하거나 원하는 대로 조절할 수 있어요."
             android:textColor="#99F6F6F7"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:fontFamily="sans-serif" />
+
+    </LinearLayout>
+
+    <!-- 카드 영역 중앙 정렬 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="64dp">
 
         <!-- 카드 3개 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
             android:orientation="horizontal">
 
             <!-- 조명 -->
@@ -106,7 +121,8 @@
                     android:gravity="center"
                     android:text="☼"
                     android:textColor="#DCC6AB"
-                    android:textSize="34sp" />
+                    android:textSize="34sp"
+                    android:fontFamily="sans-serif" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -115,7 +131,8 @@
                     android:text="조명"
                     android:textColor="#F6F6F7"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -123,7 +140,8 @@
                     android:layout_marginTop="6dp"
                     android:text="어둡게"
                     android:textColor="#99F6F6F7"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif" />
             </LinearLayout>
 
             <!-- 바람 -->
@@ -144,7 +162,8 @@
                     android:gravity="center"
                     android:text="≋"
                     android:textColor="#DCC6AB"
-                    android:textSize="34sp" />
+                    android:textSize="34sp"
+                    android:fontFamily="sans-serif" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,7 +172,8 @@
                     android:text="바람"
                     android:textColor="#F6F6F7"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -161,7 +181,8 @@
                     android:layout_marginTop="6dp"
                     android:text="약하게"
                     android:textColor="#99F6F6F7"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif" />
             </LinearLayout>
 
             <!-- 등받이 -->
@@ -182,7 +203,8 @@
                     android:gravity="center"
                     android:text="⌒"
                     android:textColor="#DCC6AB"
-                    android:textSize="34sp" />
+                    android:textSize="34sp"
+                    android:fontFamily="sans-serif" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -191,7 +213,8 @@
                     android:text="등받이"
                     android:textColor="#F6F6F7"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -199,7 +222,8 @@
                     android:layout_marginTop="6dp"
                     android:text="115–120°"
                     android:textColor="#99F6F6F7"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif" />
             </LinearLayout>
         </LinearLayout>
 
@@ -209,36 +233,42 @@
             android:layout_marginTop="16dp"
             android:text="차량이 지원하는 설정만 적용됩니다."
             android:textColor="#80F6F6F7"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:fontFamily="sans-serif" />
 
-        <!-- 버튼 2개 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnStart"
-                android:layout_width="0dp"
-                android:layout_height="96dp"
-                android:layout_weight="1"
-                android:backgroundTint="#E1E1E1"
-                android:text="이대로 시작"
-                android:textColor="#1B1C20"
-                android:textSize="26sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btnCustom"
-                android:layout_width="0dp"
-                android:layout_height="96dp"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:backgroundTint="#27292E"
-                android:text="설정 변경"
-                android:textColor="#F6F6F7"
-                android:textSize="26sp" />
-        </LinearLayout>
     </LinearLayout>
+
+    <!-- 버튼 2개: 하단 64dp 고정 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="64dp"
+        android:paddingBottom="64dp">
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="0dp"
+            android:layout_height="96dp"
+            android:layout_weight="1"
+            android:backgroundTint="#E1E1E1"
+            android:text="이대로 시작"
+            android:textColor="#1B1C20"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif" />
+
+        <Button
+            android:id="@+id/btnCustom"
+            android:layout_width="0dp"
+            android:layout_height="96dp"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:backgroundTint="#27292E"
+            android:text="설정 변경"
+            android:textColor="#F6F6F7"
+            android:textSize="26sp"
+            android:fontFamily="sans-serif" />
+    </LinearLayout>
+
 </LinearLayout>

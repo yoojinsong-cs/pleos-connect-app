@@ -30,7 +30,7 @@
 
         <activity android:name=".NappingActivity"/>
         <activity android:name=".NappingCustomActivity"/>
-        <activity android:name=".NappingTimeSelectActivity"/>
+        <activity android:name=".NappingSettingActivity"/>
 
     </application>
 

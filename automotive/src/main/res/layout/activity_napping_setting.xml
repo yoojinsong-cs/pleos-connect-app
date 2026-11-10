@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="냅핑 전 환경을 확인해 주세요"
+            android:text="냅핑 시작 전 환경을 확인해 주세요"
             android:textColor="#F6F6F7"
             android:textSize="48sp"
             android:textStyle="bold" />
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="차량 환경을 냅핑에 맞게 설정해요."
+            android:text="설정을 확인하거나 원하는 대로 조절할 수 있어요."
             android:textColor="#99F6F6F7"
             android:textSize="24sp" />
 
@@ -94,6 +94,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/bg_card_rounded"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:paddingVertical="40dp">
@@ -101,6 +102,7 @@
                 <TextView
                     android:layout_width="110dp"
                     android:layout_height="110dp"
+                    android:background="@drawable/bg_icon_rounded"
                     android:gravity="center"
                     android:text="☼"
                     android:textColor="#DCC6AB"
@@ -130,6 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
+                android:background="@drawable/bg_card_rounded"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:paddingVertical="40dp">
@@ -137,6 +140,7 @@
                 <TextView
                     android:layout_width="110dp"
                     android:layout_height="110dp"
+                    android:background="@drawable/bg_icon_rounded"
                     android:gravity="center"
                     android:text="≋"
                     android:textColor="#DCC6AB"
@@ -166,6 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_weight="1"
+                android:background="@drawable/bg_card_rounded"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:paddingVertical="40dp">
@@ -173,6 +178,7 @@
                 <TextView
                     android:layout_width="110dp"
                     android:layout_height="110dp"
+                    android:background="@drawable/bg_icon_rounded"
                     android:gravity="center"
                     android:text="⌒"
                     android:textColor="#DCC6AB"
@@ -216,9 +222,9 @@
                 android:id="@+id/btnStart"
                 android:layout_width="0dp"
                 android:layout_height="96dp"
-                android:layout_weight="2"
-                android:backgroundTint="#DCC6AB"
-                android:text="이 설정으로 시작하기"
+                android:layout_weight="1"
+                android:backgroundTint="#E1E1E1"
+                android:text="이대로 시작"
                 android:textColor="#1B1C20"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -230,7 +236,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:backgroundTint="#27292E"
-                android:text="직접 조절하기"
+                android:text="설정 변경"
                 android:textColor="#F6F6F7"
                 android:textSize="26sp" />
         </LinearLayout>

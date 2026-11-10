@@ -1,244 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#1B1C20">
+    android:layout_height="match_parent">
 
-    <!-- 상단 바 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
-        android:paddingTop="28dp"
-        android:paddingBottom="28dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#1B1C20">
 
+        <!-- 상단 바 -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:paddingTop="28dp"
+            android:paddingBottom="28dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="〈"
+                    android:textColor="#F6F6F7"
+                    android:textSize="48sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginEnd="16dp"/>
+
+                <ImageView
+                    android:layout_width="174dp"
+                    android:layout_height="42dp"
+                    android:src="@drawable/sai_logo"/>
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btnMute"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_volume_on"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:layout_marginEnd="8dp"/>
 
             <TextView
-                android:id="@+id/tvBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="〈"
-                android:textColor="#F6F6F7"
+                android:id="@+id/btnClose"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:text="✕"
+                android:textColor="#DCC6AB"
                 android:textSize="48sp"
                 android:fontFamily="sans-serif"
-                android:layout_marginEnd="16dp"/>
-
-            <ImageView
-                android:layout_width="174dp"
-                android:layout_height="42dp"
-                android:src="@drawable/sai_logo"/>
+                android:gravity="center"/>
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/btnMute"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/ic_volume_on"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            android:layout_marginEnd="8dp"/>
-
-        <TextView
-            android:id="@+id/btnClose"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:text="✕"
-            android:textColor="#DCC6AB"
-            android:textSize="48sp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"/>
-
-    </LinearLayout>
-
-    <!-- 상단바 26dp 아래 고정 헤더 텍스트 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:paddingHorizontal="120dp"
-        android:paddingTop="26dp">
-
-        <TextView
-            android:id="@+id/tvPhaseLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NAPPING · WIND DOWN"
-            android:textColor="#DCC6AB"
-            android:textSize="22sp"
-            android:letterSpacing="0.2"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif"/>
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="눈을 감고 편안하게 쉬세요"
-            android:textColor="#F6F6F7"
-            android:textSize="48sp"
-            android:fontFamily="sans-serif"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/tvSubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="안내 음성은 잠시 후 종료돼요."
-            android:textColor="#99F6F6F7"
-            android:textSize="24sp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"/>
-
-    </LinearLayout>
-
-    <!-- ASMR + Lottie 중앙 정렬 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:paddingHorizontal="120dp">
-
-        <Button
-            android:id="@+id/btnAsmrSelect"
-            android:layout_width="wrap_content"
-            android:layout_height="52dp"
-            android:text="♪  ASMR 1"
-            android:textColor="#DCC6AB"
-            android:textSize="26sp"
-            android:letterSpacing="0.05"
-            android:fontFamily="sans-serif"
-            android:background="@drawable/bg_dropdown"
-            android:paddingStart="28dp"
-            android:paddingEnd="28dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"/>
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottieView"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
-            android:layout_gravity="center"
-            app:lottie_rawRes="@raw/sai_nap_loop"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true" />
-
-    </LinearLayout>
-
-    <!-- 하단 진행 카드: 하단 64dp 고정 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_card_rounded"
-        android:padding="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="64dp"
-        android:gravity="center_vertical">
-
+        <!-- 상단바 26dp 아래 고정 헤더 텍스트 -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingHorizontal="120dp"
+            android:paddingTop="26dp">
 
             <TextView
+                android:id="@+id/tvPhaseLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="진행 시간"
+                android:text="NAPPING · WIND DOWN"
                 android:textColor="#DCC6AB"
-                android:textSize="28sp"
+                android:textSize="22sp"
+                android:letterSpacing="0.2"
+                android:textStyle="bold"
                 android:fontFamily="sans-serif"/>
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="눈을 감고 편안하게 쉬세요"
+                android:textColor="#F6F6F7"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tvSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="안내 음성은 잠시 후 종료돼요."
+                android:textColor="#99F6F6F7"
+                android:textSize="24sp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <!-- ASMR + Lottie 중앙 정렬 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="120dp">
+
+            <Button
+                android:id="@+id/btnAsmrSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="52dp"
+                android:text="♪  ASMR 1"
+                android:textColor="#DCC6AB"
+                android:textSize="26sp"
+                android:letterSpacing="0.05"
+                android:fontFamily="sans-serif"
+                android:background="@drawable/bg_dropdown"
+                android:paddingStart="28dp"
+                android:paddingEnd="28dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieView"
+                android:layout_width="400dp"
+                android:layout_height="400dp"
+                android:layout_gravity="center"
+                app:lottie_rawRes="@raw/sai_nap_loop"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true" />
+
+        </LinearLayout>
+
+        <!-- 하단 진행 카드: 하단 64dp 고정 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_card_rounded"
+            android:padding="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="64dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="진행 시간"
+                    android:textColor="#DCC6AB"
+                    android:textSize="28sp"
+                    android:fontFamily="sans-serif"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:id="@+id/tvElapsed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:00"
+                        android:textColor="#F6F6F7"
+                        android:textSize="52sp"
+                        android:fontFamily="sans-serif"/>
+
+                    <TextView
+                        android:id="@+id/tvTotalTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" / 20:00"
+                        android:textColor="#DCC6AB"
+                        android:textSize="36sp"
+                        android:fontFamily="sans-serif"
+                        android:layout_marginStart="8dp"/>
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="16dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressTint="#DCC6AB"
+                    android:progressBackgroundTint="#27292E"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginTop="8dp">
+                android:orientation="vertical"
+                android:gravity="end"
+                android:layout_marginStart="40dp">
 
                 <TextView
-                    android:id="@+id/tvElapsed"
+                    android:id="@+id/tvPhaseInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="00:00"
+                    android:text="수면 진입"
+                    android:textColor="#DCC6AB"
+                    android:textSize="28sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_gravity="end"/>
+
+                <TextView
+                    android:id="@+id/tvPhasePercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0%"
                     android:textColor="#F6F6F7"
                     android:textSize="52sp"
-                    android:fontFamily="sans-serif"/>
-
-                <TextView
-                    android:id="@+id/tvTotalTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" / 20:00"
-                    android:textColor="#DCC6AB"
-                    android:textSize="36sp"
                     android:fontFamily="sans-serif"
-                    android:layout_marginStart="8dp"/>
+                    android:layout_marginTop="8dp"/>
 
             </LinearLayout>
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:layout_marginTop="16dp"
-                android:max="100"
-                android:progress="0"
-                android:progressTint="#DCC6AB"
-                android:progressBackgroundTint="#27292E"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="end"
-            android:layout_marginStart="40dp">
-
-            <TextView
-                android:id="@+id/tvPhaseInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="수면 진입"
-                android:textColor="#DCC6AB"
-                android:textSize="28sp"
-                android:fontFamily="sans-serif"
-                android:layout_gravity="end"/>
-
-            <TextView
-                android:id="@+id/tvPhasePercent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0%"
-                android:textColor="#F6F6F7"
-                android:textSize="52sp"
-                android:fontFamily="sans-serif"
-                android:layout_marginTop="8dp"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+    <!-- 어두운 오버레이 -->
+    <View
+        android:id="@+id/brightnessOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:alpha="0"
+        android:clickable="false"/>
+
+</FrameLayout>

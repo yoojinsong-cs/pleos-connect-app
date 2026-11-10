@@ -9,6 +9,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
@@ -20,22 +21,20 @@ import java.util.Locale
 
 class NappingActivity : FragmentActivity() {
 
-    private var totalSeconds = 20 * 60  // Intent로 덮어씌워짐
+    private var totalSeconds = 20 * 60
     private var elapsedSeconds = 0
     private val handler = Handler(Looper.getMainLooper())
 
     // TTS
     private lateinit var tts: TextToSpeech
     private var ttsReady = false
-    private var sleepSpoken = false
-    private var wakeSpoken = false
 
     // ASMR
     private var mediaPlayer: MediaPlayer? = null
     private var isMuted = false
     private var currentAsmr = R.raw.asmr1
 
-    // 화면 밝기
+    // 페이즈
     private var currentPhaseIndex = -1
 
     data class Phase(
@@ -58,7 +57,6 @@ class NappingActivity : FragmentActivity() {
         override fun run() {
             elapsedSeconds++
             updateUI()
-            checkTts()
             if (elapsedSeconds < totalSeconds) {
                 handler.postDelayed(this, 1000)
             } else {
@@ -71,19 +69,15 @@ class NappingActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_napping_progress)
 
-        // 시간 선택 화면에서 받아온 시간
         totalSeconds = intent.getIntExtra("TOTAL_SECONDS", 20 * 60)
 
-        // 뒤로가기: 이전 화면으로
         findViewById<TextView>(R.id.tvBack).setOnClickListener { finish() }
 
-        // X: 앱 완전 종료
         findViewById<TextView>(R.id.btnClose).setOnClickListener {
             finishAffinity()
             System.exit(0)
         }
 
-        // 스피커(음소거) 버튼
         val btnMute = findViewById<ImageButton>(R.id.btnMute)
         btnMute.setOnClickListener {
             isMuted = !isMuted
@@ -96,7 +90,6 @@ class NappingActivity : FragmentActivity() {
             }
         }
 
-        // ASMR 드롭다운
         val btnAsmrSelect = findViewById<Button>(R.id.btnAsmrSelect)
         btnAsmrSelect.setOnClickListener { view ->
             val popup = PopupMenu(this, view)
@@ -155,17 +148,9 @@ class NappingActivity : FragmentActivity() {
                 tts.setLocale(Locale.KOREA)
                 ttsReady = true
                 speak("눈을 감고 편안하게 쉬세요")
-                sleepSpoken = true
             }
             override fun onFailure(errorType: ErrorType) = Unit
         })
-    }
-
-    private fun checkTts() {
-        if (!wakeSpoken && elapsedSeconds >= totalSeconds) {
-            speak("다 쉬셨어요. 천천히 일어나세요")
-            wakeSpoken = true
-        }
     }
 
     private fun speak(text: String) {
@@ -178,6 +163,14 @@ class NappingActivity : FragmentActivity() {
         val params = window.attributes
         params.screenBrightness = brightness
         window.attributes = params
+        val alpha = if (brightness == WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE) {
+            0f
+        } else {
+            (1f - brightness).coerceIn(0f, 0.95f)
+        }
+        runOnUiThread {
+            findViewById<View>(R.id.brightnessOverlay)?.alpha = alpha
+        }
     }
 
     // ── UI 업데이트 ────────────────────────────
@@ -187,14 +180,13 @@ class NappingActivity : FragmentActivity() {
         val phaseIndex = phases.indexOfLast { percent >= it.startPercent }.coerceAtLeast(0)
         val phase = phases[phaseIndex]
 
-        // 페이즈 전환 시 화면 밝기 조절
         if (phaseIndex != currentPhaseIndex) {
             currentPhaseIndex = phaseIndex
             when (phaseIndex) {
-                0 -> setScreenBrightness(0.08f)
-                1 -> setScreenBrightness(0.02f)
-                2 -> setScreenBrightness(0.3f)
-                3 -> setScreenBrightness(WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE)
+                0 -> { setScreenBrightness(0.08f); speak("눈을 감고 편안하게 쉬세요") }
+                1 -> { setScreenBrightness(0.02f); speak("편안하게 쉬세요") }
+                2 -> { setScreenBrightness(0.3f); speak("천천히 깨어날 시간이에요") }
+                3 -> { setScreenBrightness(WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE); speak("곧 완전히 깨어납니다") }
             }
         }
 

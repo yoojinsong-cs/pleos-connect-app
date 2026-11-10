@@ -42,7 +42,7 @@ class NappingTimeSelectActivity : FragmentActivity() {
         // 시작하기 버튼
         findViewById<Button>(R.id.btnStart).setOnClickListener {
             val intent = Intent(this, NappingActivity::class.java)
-            intent.putExtra("TOTAL_SECONDS", selectedMinutes * 60)
+            intent.putExtra("TOTAL_SECONDS", 1 * 60)
             startActivity(intent)
         }
     }

@@ -171,9 +171,9 @@ class NappingActivity : FragmentActivity() {
         if (phaseIndex != currentPhaseIndex) {
             currentPhaseIndex = phaseIndex
             when (phaseIndex) {
-                0 -> { setScreenBrightness(0.3f);  speak("눈을 감고 편안하게 쉬세요") }
-                1 -> { setScreenBrightness(0.1f);  }
-                2 -> { setScreenBrightness(0.3f);  speak("천천히 깨어날 시간이에요") }
+                0 -> { setScreenBrightness(0.7f);  speak("눈을 감고 편안하게 쉬세요") }
+                1 -> { setScreenBrightness(0.5f);  }
+                2 -> { setScreenBrightness(0.7f);  speak("천천히 깨어날 시간이에요") }
                 3 -> {
                     setScreenBrightness(WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE)
                     speak("곧 완전히 깨어납니다")

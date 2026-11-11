@@ -14,10 +14,10 @@ import android.view.WindowManager
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.PopupMenu
 import android.widget.SeekBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import java.util.Locale
 
@@ -39,9 +39,7 @@ class NappingActivity : FragmentActivity() {
     // 카페 주문 Mock
     private val nearestCafe = "스타벅스 서초우성사거리점"
     private val orderItem = "아메리카노"
-    private var cafeSearchDone = false   // 90% 토스트
-    private var cafeOrderDone = false    // 95% 토스트
-    private var cafeTtsDone = false      // 100% TTS
+    private var cafeTtsDone = false
 
     data class Phase(
         val label: String,
@@ -67,6 +65,15 @@ class NappingActivity : FragmentActivity() {
                 handler.postDelayed(this, 1000)
             } else {
                 stopAsmr()
+                if (!cafeTtsDone) {
+                    cafeTtsDone = true
+                    speak("${nearestCafe}에서 ${orderItem}를 주문 완료했어요")
+                    runOnUiThread {
+                        findViewById<TextView>(R.id.tvOrderCafe).text = nearestCafe
+                        findViewById<TextView>(R.id.tvOrderItem).text = "${orderItem}를 주문을 완료했어요"
+                        findViewById<LinearLayout>(R.id.orderCompleteCard).visibility = View.VISIBLE
+                    }
+                }
             }
         }
     }
@@ -156,12 +163,6 @@ class NappingActivity : FragmentActivity() {
         if (ttsReady) tts.speak(text)
     }
 
-    private fun showToast(message: String) {
-        runOnUiThread {
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-        }
-    }
-
     private fun setScreenBrightness(brightness: Float) {
         val params = window.attributes
         params.screenBrightness = brightness
@@ -178,25 +179,6 @@ class NappingActivity : FragmentActivity() {
 
     private fun updateUI() {
         val percent = (elapsedSeconds * 100 / totalSeconds)
-
-        // 90% - 주변 카페 검색 토스트
-        if (percent >= 90 && !cafeSearchDone) {
-            cafeSearchDone = true
-            showToast("주변 카페 검색 중")
-        }
-
-        // 95% - 주문 완료 토스트 (화면에만)
-        if (percent >= 95 && !cafeOrderDone) {
-            cafeOrderDone = true
-            showToast("${nearestCafe}에서 ${orderItem}를 주문 완료했어요")
-        }
-
-        // 100% - 주문 완료 TTS
-        if (elapsedSeconds >= totalSeconds && !cafeTtsDone) {
-            cafeTtsDone = true
-            speak("${nearestCafe}에서 ${orderItem}를 주문 완료했어요")
-        }
-
         val phaseIndex = phases.indexOfLast { percent >= it.startPercent }.coerceAtLeast(0)
         val phase = phases[phaseIndex]
 

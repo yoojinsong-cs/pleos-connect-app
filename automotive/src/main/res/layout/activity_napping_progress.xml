@@ -244,4 +244,39 @@
         android:alpha="0"
         android:clickable="false" />
 
+    <!-- 주문 완료 팝업 카드 -->
+    <LinearLayout
+        android:id="@+id/orderCompleteCard"
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_card_rounded"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingHorizontal="48dp"
+        android:paddingVertical="40dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvOrderCafe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="스타벅스 서초우성사거리점"
+            android:textColor="#DCC6AB"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif" />
+
+        <TextView
+            android:id="@+id/tvOrderItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="아메리카노 주문을 완료했어요"
+            android:textColor="#F6F6F7"
+            android:textSize="24sp"
+            android:fontFamily="sans-serif" />
+
+    </LinearLayout>
+
 </FrameLayout>

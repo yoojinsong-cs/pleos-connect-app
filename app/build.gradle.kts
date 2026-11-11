@@ -43,4 +43,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     implementation("ai.pleos.playground:Vehicle:2.3.2")
     implementation("ai.pleos.playground:FusedLocation:1.1.3")
+    implementation("com.airbnb.android:lottie:6.4.0")
 }

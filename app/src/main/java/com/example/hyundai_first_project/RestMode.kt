@@ -15,6 +15,8 @@ interface RestMode {
     fun stop()                  // 모드 강제 종료: 타이머·소리 정리 (차량 복원은 MainActivity가 해요)
     // 리추얼이 다 끝났는지 (끝났으면 ✕ = 앱 닫기, 아니면 ✕ = 홈으로). 안 만들면 false 예요.
     fun isFinished(): Boolean = false
+    // ‹ 뒤로 가기: 모드 안에서 이전 화면으로 갔으면 true. false면 MainActivity가 모드를 끝내고 "모드 선택"으로 가요.
+    fun goBack(): Boolean = false
 }
 
 class ModeHost(
@@ -42,4 +44,3 @@ fun View.round(color: String, radiusDp: Float, stroke: String? = null) {
         if (stroke != null) setStroke((1 * density).toInt(), Color.parseColor(stroke))
     }
 }
-

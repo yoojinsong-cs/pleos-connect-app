@@ -1,80 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- [릴렉스 담당] mode_relax.xml : 싱잉볼 → 환경 확인 → 호흡 → 스트레칭 → 완료 → 세션 완료
-     위쪽 ‹ SΛI × 는 activity_main.xml 에 있어서 여기엔 없어요.
-     색: 배경 #1B1C20 · 흰색 #F6F6F7 · 강조 #DCC6AB · 보라 #A9A2E8 -->
+<!-- [릴렉스 담당] mode_relax.xml (v11)
+     싱잉볼 → 오늘의 릴렉스(6개 모드) → 3초 카운트다운 → 1~4단계 → 완료 → 세션 완료 → 이번 주 기록
+     디자인 포맷: 배경 #1B1C20 · 흰색 #F6F6F7 · 강조 #DCC6AB · 버튼 배경 #27292E · 라운드 20
+     제목은 위쪽 바에서 28dp 아래부터 / 진행 바는 맨 아래에서 64dp 위
+     글씨: 부제목 22 · 대제목 48 · 소제목 24 · 중간 버튼 28/22 · 하단 버튼 28 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1B1C20"
     android:orientation="vertical"
     android:paddingHorizontal="64dp"
-    android:paddingTop="120dp"
-    android:paddingBottom="36dp">
+    android:paddingTop="140dp"
+    android:paddingBottom="64dp">
 
-    <!-- 위쪽 글씨 (가운데 정렬) -->
+    <!-- 위쪽 글씨 (가운데) -->
     <TextView
         android:id="@+id/relaxLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:letterSpacing="0.2"
-        android:text="SINGING BOWL · BEGIN"
+        android:text="SINGING BOWL"
         android:textColor="#DCC6AB"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/relaxTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="싱잉볼 소리에 귀 기울여 보세요"
+        android:text="오늘의 싱잉볼"
         android:textColor="#F6F6F7"
-        android:textSize="54sp"
+        android:textSize="48sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/relaxSub"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="첫 번째 울림이 시작됩니다."
+        android:text="역할과 역할 사이를 조율합니다."
         android:textColor="#B3F6F6F7"
-        android:textSize="26sp" />
+        android:textSize="24sp" />
 
-    <!-- 1~4단계 칸 (릴렉스 5분 동안만 보여요. 칸은 코드에서 만들어요) -->
+    <!-- 1~4단계 칸 (릴렉스 5분 동안만 보여요) -->
     <LinearLayout
         android:id="@+id/relaxSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         android:orientation="horizontal"
         android:visibility="gone" />
 
-    <!-- 가운데 그림 자리 (화면마다 하나만 보여요) -->
+    <!-- 가운데 자리 (화면마다 하나만 보여요) -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginVertical="20dp">
+        android:layout_marginVertical="16dp">
 
-        <!-- 싱잉볼 -->
+        <!-- 싱잉볼 (점 그릇 · 채 · 물결) -->
         <com.example.hyundai_first_project.SingingBowlView
             android:id="@+id/relaxBowl"
-            android:layout_width="340dp"
-            android:layout_height="340dp"
-            android:layout_gravity="center" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        <!-- 호흡·스트레칭 소용돌이 -->
+        <!-- 모드 그림 (비·캠핑·우주·바다·숲·기본) -->
         <com.example.hyundai_first_project.ParticleView
             android:id="@+id/relaxParticles"
-            android:layout_width="380dp"
-            android:layout_height="380dp"
-            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:visibility="gone" />
+
+        <!-- 싱잉볼 건너뛰기 (싱잉볼 화면에서만 보여요) -->
+        <TextView
+            android:id="@+id/relaxSkip"
+            android:layout_width="300dp"
+            android:layout_height="88dp"
+            android:layout_gravity="bottom|end"
+            android:gravity="center"
+            android:text="싱잉볼 건너뛰기  ›"
+            android:textColor="#F6F6F7"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <!-- 환경 맞추는 중: 3초 카운트다운 -->
         <LinearLayout
@@ -85,26 +96,22 @@
             android:orientation="vertical"
             android:visibility="gone">
 
-            <FrameLayout
-                android:layout_width="220dp"
-                android:layout_height="220dp">
+            <!-- 등받이가 지금 각도 → 117°로 눕혀지는 그림 -->
+            <com.example.hyundai_first_project.SeatAngleView
+                android:id="@+id/relaxSeatAngle"
+                android:layout_width="680dp"
+                android:layout_height="300dp" />
 
-                <ProgressBar
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:indeterminate="true"
-                    android:indeterminateTint="#DCC6AB" />
-
-                <TextView
-                    android:id="@+id/relaxCountdown"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="3"
-                    android:textColor="#F6F6F7"
-                    android:textSize="96sp"
-                    android:textStyle="bold" />
-            </FrameLayout>
+            <TextView
+                android:id="@+id/relaxCountdown"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="#F6F6F7"
+                android:textSize="48sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/relaxLoadingText"
@@ -112,14 +119,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:gravity="center"
-                android:text="따뜻한 색 조명 · 약한 바람 · 등받이 118°"
+                android:text="따뜻한 색 조명 · 명상 음악"
                 android:textColor="#DCC6AB"
                 android:textSize="24sp" />
+
+
         </LinearLayout>
 
-        <!-- 환경 확인 -->
+        <!-- 오늘의 릴렉스: 모드 6개 (카드는 코드에서 만들어요) -->
         <LinearLayout
-            android:id="@+id/relaxPrepare"
+            android:id="@+id/relaxChoose"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -127,314 +136,21 @@
             android:visibility="gone">
 
             <LinearLayout
-                android:id="@+id/relaxCards"
+                android:id="@+id/relaxModeGrid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/relaxLightCard"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:paddingVertical="40dp">
-
-                    <TextView
-                        android:id="@+id/relaxLightIcon"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:gravity="center"
-                        android:text="☼"
-                        android:textColor="#DCC6AB"
-                        android:textSize="34sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:text="조명"
-                        android:textColor="#F6F6F7"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/relaxLightSub"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="따뜻한 색"
-                        android:textColor="#99F6F6F7"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/relaxAirCard"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:paddingVertical="40dp">
-
-                    <TextView
-                        android:id="@+id/relaxAirIcon"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:gravity="center"
-                        android:text="≋"
-                        android:textColor="#DCC6AB"
-                        android:textSize="34sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:text="바람"
-                        android:textColor="#F6F6F7"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/relaxAirSub"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="약하게"
-                        android:textColor="#99F6F6F7"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/relaxSeatCard"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:paddingVertical="40dp">
-
-                    <TextView
-                        android:id="@+id/relaxSeatIcon"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:gravity="center"
-                        android:text="⌒"
-                        android:textColor="#DCC6AB"
-                        android:textSize="34sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="18dp"
-                        android:text="등받이"
-                        android:textColor="#F6F6F7"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/relaxSeatSub"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="115–120°"
-                        android:textColor="#99F6F6F7"
-                        android:textSize="16sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- 설정 변경을 누르면 나오는 칸 (조명·바람·등받이·온도·소리) -->
-            <LinearLayout
-                android:id="@+id/relaxSettings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="28dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="24dp"
-                android:visibility="gone">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:text="조명"
-                        android:textColor="#F6F6F7"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:id="@+id/relaxLightChoices"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:text="바람"
-                        android:textColor="#F6F6F7"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:id="@+id/relaxAirChoices"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:text="등받이"
-                        android:textColor="#F6F6F7"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/relaxSeatLabel"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="118°"
-                        android:textColor="#DCC6AB"
-                        android:textSize="22sp" />
-
-                    <SeekBar
-                        android:id="@+id/relaxSeatSeek"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:progressTint="#DCC6AB"
-                        android:thumbTint="#DCC6AB" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:text="온도"
-                        android:textColor="#F6F6F7"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/relaxTempLabel"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="24.0°C"
-                        android:textColor="#DCC6AB"
-                        android:textSize="22sp" />
-
-                    <SeekBar
-                        android:id="@+id/relaxTempSeek"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:progressTint="#DCC6AB"
-                        android:thumbTint="#DCC6AB" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:text="소리"
-                        android:textColor="#F6F6F7"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/relaxVolumeLabel"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="70%"
-                        android:textColor="#DCC6AB"
-                        android:textSize="22sp" />
-
-                    <SeekBar
-                        android:id="@+id/relaxVolumeSeek"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:progressTint="#DCC6AB"
-                        android:thumbTint="#DCC6AB" />
-                </LinearLayout>
-            </LinearLayout>
+                android:orientation="vertical" />
 
             <TextView
                 android:id="@+id/relaxNote"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:text="차량이 지원하는 설정만 적용됩니다."
+                android:layout_marginTop="20dp"
+                android:text="모드를 누르면 조명과 음악이 모드에 맞게 바뀌어요."
                 android:textColor="#80F6F6F7"
-                android:textSize="16sp" />
+                android:textSize="22sp" />
 
-            <LinearLayout
-                android:id="@+id/relaxButtons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/relaxStart"
-                    android:layout_width="0dp"
-                    android:layout_height="96dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="이대로 시작"
-                    android:textColor="#1B1C20"
-                    android:textSize="28sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/relaxChange"
-                    android:layout_width="0dp"
-                    android:layout_height="96dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="설정 변경"
-                    android:textColor="#F6F6F7"
-                    android:textSize="28sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
         </LinearLayout>
 
         <!-- 이번 주 리추얼 기록 (월~일 칸은 코드에서 만들어요) -->
@@ -458,7 +174,7 @@
                 android:layout_marginTop="24dp"
                 android:text="마이현대 앱에서 자세히 확인하실 수 있어요."
                 android:textColor="#80F6F6F7"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/relaxRecordHome"
@@ -523,7 +239,7 @@
                             android:layout_height="wrap_content"
                             android:text="차량 환경을 이전 설정으로 복원했어요"
                             android:textColor="#F6F6F7"
-                            android:textSize="20sp"
+                            android:textSize="28sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -532,7 +248,7 @@
                             android:layout_marginTop="6dp"
                             android:text="지원되는 항목에 한해 복원을 적용했어요."
                             android:textColor="#99F6F6F7"
-                            android:textSize="16sp" />
+                            android:textSize="22sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -571,7 +287,7 @@
                 android:layout_weight="1"
                 android:text="지금 · 싱잉볼"
                 android:textColor="#B3F6F6F7"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/relaxPhaseLabel"
@@ -579,7 +295,7 @@
                 android:layout_height="wrap_content"
                 android:text="다음 스텝 : 환경 확인"
                 android:textColor="#DCC6AB"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -608,7 +324,7 @@
                 android:layout_weight="1"
                 android:text="/ 01:00"
                 android:textColor="#80F6F6F7"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/relaxPercent"
@@ -617,7 +333,7 @@
                 android:layout_marginBottom="6dp"
                 android:text="0%"
                 android:textColor="#A9A2E8"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
         </LinearLayout>
 

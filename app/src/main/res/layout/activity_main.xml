@@ -8,50 +8,128 @@
     android:layout_height="match_parent"
     android:background="#1B1C20">
 
-  <!-- 1. 첫 화면 (주행 중) -->
+  <!-- 1. SAI 홈 화면 (앱을 켜면 제일 먼저 보여요) -->
   <LinearLayout
       android:id="@+id/homeView"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:gravity="center"
       android:orientation="vertical"
-      android:padding="48dp">
+      android:paddingHorizontal="64dp"
+      android:paddingTop="140dp"
+      android:paddingBottom="64dp">
 
-    <TextView
+    <!-- 큰 로고 -->
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:letterSpacing="0.5"
-        android:text="— SΛI —"
-        android:textColor="#DCC6AB"
-        android:textSize="26sp" />
+        android:layout_height="96dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="SAI"
+        android:src="@drawable/sai_logo" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="마인드풀 드라이브"
-        android:textColor="#F6F6F7"
-        android:textSize="52sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/statusText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="차량 연결 중..."
-        android:textColor="#99F6F6F7"
+        android:letterSpacing="0.4"
+        android:text="SPACE ACROSS IDENTITIES"
+        android:textColor="#DCC6AB"
         android:textSize="22sp" />
+
+    <!-- 인사 -->
+    <TextView
+        android:id="@+id/homeGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:text="붕붕이님, 오늘도 수고 많으셨어요"
+        android:textColor="#F6F6F7"
+        android:textSize="48sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/adviceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="14dp"
         android:gravity="center"
-        android:text="기어를 P에 두면 SAI가 시작돼요."
-        android:textColor="#DCC6AB"
-        android:textSize="30sp" />
+        android:text="기어를 P에 두면 SAI를 시작할 수 있어요."
+        android:textColor="#B3F6F6F7"
+        android:textSize="24sp" />
+
+    <!-- 시작 버튼 -->
+    <TextView
+        android:id="@+id/homeStart"
+        android:layout_width="600dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:text="SAI 시작하기"
+        android:textColor="#1B1C20"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <!-- 아래 작은 정보 2칸: 차량 상태 / 이번 주 리추얼 -->
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal">
+
+      <LinearLayout
+          android:id="@+id/homeStatusCard"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:orientation="vertical"
+          android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="차량 상태"
+            android:textColor="#80F6F6F7"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:maxLines="2"
+            android:text="차량 연결 중..."
+            android:textColor="#F6F6F7"
+            android:textSize="24sp" />
+      </LinearLayout>
+
+      <LinearLayout
+          android:id="@+id/homeWeekCard"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_weight="1"
+          android:orientation="vertical"
+          android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이번 주 리추얼"
+            android:textColor="#80F6F6F7"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/homeWeekText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="0회"
+            android:textColor="#DCC6AB"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+      </LinearLayout>
+    </LinearLayout>
   </LinearLayout>
 
   <!-- 2. 준비 완료 (안전 조건 확인) -->
@@ -61,8 +139,9 @@
       android:layout_height="match_parent"
       android:gravity="center_horizontal"
       android:orientation="vertical"
-      android:paddingHorizontal="56dp"
-      android:paddingTop="120dp"
+      android:paddingHorizontal="64dp"
+      android:paddingTop="140dp"
+      android:paddingBottom="64dp"
       android:visibility="gone">
 
     <TextView
@@ -70,7 +149,7 @@
         android:layout_height="wrap_content"
         android:text="READY"
         android:textColor="#DCC6AB"
-        android:textSize="17sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <TextView
@@ -80,7 +159,7 @@
         android:gravity="center"
         android:text="SAI를 시작할 준비가 됐어요"
         android:textColor="#F6F6F7"
-        android:textSize="40sp"
+        android:textSize="48sp"
         android:textStyle="bold" />
 
     <TextView
@@ -90,7 +169,7 @@
         android:gravity="center"
         android:text="차량 상태를 확인했어요. 원하는 모드를 선택해 주세요."
         android:textColor="#99F6F6F7"
-        android:textSize="20sp" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -123,7 +202,7 @@
             android:layout_marginTop="18dp"
             android:text="주차 상태"
             android:textColor="#F6F6F7"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
@@ -134,7 +213,7 @@
             android:gravity="center"
             android:text="P단 확인"
             android:textColor="#99F6F6F7"
-            android:textSize="21sp" />
+            android:textSize="22sp" />
       </LinearLayout>
 
       <LinearLayout
@@ -163,7 +242,7 @@
             android:layout_marginTop="18dp"
             android:text="운전석"
             android:textColor="#F6F6F7"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
@@ -173,7 +252,7 @@
             android:gravity="center"
             android:text="탑승 확인"
             android:textColor="#99F6F6F7"
-            android:textSize="21sp" />
+            android:textSize="22sp" />
       </LinearLayout>
 
       <LinearLayout
@@ -202,7 +281,7 @@
             android:layout_marginTop="18dp"
             android:text="차량 기능"
             android:textColor="#F6F6F7"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
@@ -212,7 +291,7 @@
             android:gravity="center"
             android:text="지원 확인"
             android:textColor="#99F6F6F7"
-            android:textSize="21sp" />
+            android:textSize="22sp" />
       </LinearLayout>
 
     </LinearLayout>
@@ -225,7 +304,7 @@
         android:gravity="center"
         android:text="모드 선택하기"
         android:textColor="#1B1C20"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:textStyle="bold" />
   </LinearLayout>
 
@@ -236,8 +315,9 @@
       android:layout_height="match_parent"
       android:gravity="center_horizontal"
       android:orientation="vertical"
-      android:paddingHorizontal="56dp"
-      android:paddingTop="120dp"
+      android:paddingHorizontal="64dp"
+      android:paddingTop="140dp"
+      android:paddingBottom="64dp"
       android:visibility="gone">
 
     <TextView
@@ -245,7 +325,7 @@
         android:layout_height="wrap_content"
         android:text="SELECT MODE"
         android:textColor="#DCC6AB"
-        android:textSize="17sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <TextView
@@ -255,7 +335,7 @@
         android:gravity="center"
         android:text="지금 필요한 시간은 무엇인가요?"
         android:textColor="#F6F6F7"
-        android:textSize="40sp"
+        android:textSize="48sp"
         android:textStyle="bold" />
 
     <TextView
@@ -265,7 +345,7 @@
         android:gravity="center"
         android:text="원하는 모드와 시간을 선택해 주세요."
         android:textColor="#99F6F6F7"
-        android:textSize="26sp" />
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -300,7 +380,7 @@
             android:layout_marginTop="18dp"
             android:text="릴렉스"
             android:textColor="#F6F6F7"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
@@ -309,7 +389,7 @@
             android:layout_marginTop="4dp"
             android:text="5분"
             android:textColor="#A9A2E8"
-            android:textSize="26sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -318,7 +398,7 @@
             android:gravity="center"
             android:text="호흡과 스트레칭으로 긴장을 풀어요."
             android:textColor="#99F6F6F7"
-            android:textSize="21sp" />
+            android:textSize="22sp" />
       </LinearLayout>
 
       <LinearLayout
@@ -349,7 +429,7 @@
             android:layout_marginTop="18dp"
             android:text="냅핑"
             android:textColor="#F6F6F7"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
@@ -358,7 +438,7 @@
             android:layout_marginTop="4dp"
             android:text="20분"
             android:textColor="#A9A2E8"
-            android:textSize="26sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -367,7 +447,7 @@
             android:gravity="center"
             android:text="20분 동안 쉬고 천천히 깨어나요."
             android:textColor="#99F6F6F7"
-            android:textSize="21sp" />
+            android:textSize="22sp" />
       </LinearLayout>
 
       <LinearLayout
@@ -398,7 +478,7 @@
             android:layout_marginTop="18dp"
             android:text="각성"
             android:textColor="#F6F6F7"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
@@ -407,7 +487,7 @@
             android:layout_marginTop="4dp"
             android:text="3분"
             android:textColor="#A9A2E8"
-            android:textSize="26sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -416,7 +496,7 @@
             android:gravity="center"
             android:text="다음 일정 전에 집중을 준비해요."
             android:textColor="#99F6F6F7"
-            android:textSize="21sp" />
+            android:textSize="22sp" />
       </LinearLayout>
 
     </LinearLayout>
@@ -427,7 +507,7 @@
         android:layout_marginTop="40dp"
         android:text="모드를 선택하면 싱잉볼로 시작해요."
         android:textColor="#99F6F6F7"
-        android:textSize="18sp" />
+        android:textSize="22sp" />
   </LinearLayout>
 
   <!-- 4. 모드 화면이 들어갈 자리 (mode_relax.xml / mode_nap.xml / mode_awake.xml) -->
@@ -470,7 +550,7 @@
           android:layout_marginTop="28dp"
           android:text="차량 상태가 바뀌어 중단했어요"
           android:textColor="#F6F6F7"
-          android:textSize="30sp"
+          android:textSize="28sp"
           android:textStyle="bold" />
 
       <TextView
@@ -479,7 +559,7 @@
           android:layout_marginTop="12dp"
           android:text="안전을 위해 모드를 종료했어요."
           android:textColor="#B3F6F6F7"
-          android:textSize="20sp" />
+          android:textSize="24sp" />
 
       <TextView
           android:layout_width="wrap_content"
@@ -487,7 +567,7 @@
           android:layout_marginTop="8dp"
           android:text="주차 상태를 확인한 뒤 다시 시작해 주세요."
           android:textColor="#80F6F6F7"
-          android:textSize="17sp" />
+          android:textSize="22sp" />
 
       <LinearLayout
           android:layout_width="match_parent"
@@ -504,7 +584,7 @@
             android:gravity="center"
             android:text="닫기"
             android:textColor="#1B1C20"
-            android:textSize="22sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
@@ -516,7 +596,7 @@
             android:gravity="center"
             android:text="설정 상태 보기"
             android:textColor="#F6F6F7"
-            android:textSize="22sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
       </LinearLayout>
     </LinearLayout>

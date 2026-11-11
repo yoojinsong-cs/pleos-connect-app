@@ -24,13 +24,15 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
 
 class MainActivity : AppCompatActivity() {
 
     // ===== 바꿔도 되는 설정값 =====
-    private val driverName = "SAI"
+    private val driverName = "붕붕이"
     private val locationPermission = "pleos.car.permission.FUSED_LOCATION"
 
     private lateinit var vehicle: Vehicle
@@ -53,6 +55,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adviceText: TextView
     private lateinit var readyParkSub: TextView
     private lateinit var debugText: TextView
+    private lateinit var homeStart: TextView
+    private lateinit var homeGreeting: TextView
+    private lateinit var homeWeekText: TextView
 
     private var parked: Boolean? = null
     private var locationReady = false
@@ -98,8 +103,12 @@ class MainActivity : AppCompatActivity() {
         adviceText = findViewById(R.id.adviceText)
         readyParkSub = findViewById(R.id.readyParkSub)
         debugText = findViewById(R.id.debugText)
+        homeStart = findViewById(R.id.homeStart)
+        homeGreeting = findViewById(R.id.homeGreeting)
+        homeWeekText = findViewById(R.id.homeWeekText)
 
         // 버튼
+        homeStart.setOnClickListener { startFromHome() }                 // 홈 → 준비 완료
         findViewById<View>(R.id.readyNext).setOnClickListener { show(modeSelectView) }
         // ★ 모드 카드 → 각자 만든 모드 실행 (모드를 새로 만들면 여기 한 줄 추가)
         findViewById<View>(R.id.relaxButton).setOnClickListener { startMode(RelaxMode()) }
@@ -115,15 +124,18 @@ class MainActivity : AppCompatActivity() {
         // 카드·버튼 꾸미기 (#1AF6F6F7 = 흰색을 10%만 보이게)
         listOf(R.id.readyPark, R.id.readyDriver, R.id.readyVehicle,
             R.id.relaxButton, R.id.napButton, R.id.awakeButton, R.id.safetyCard).forEach {
-            findViewById<View>(it).round("#14F6F6F7", 20f)
+            findViewById<View>(it).round("#27292E", 20f)
         }
         listOf(R.id.readyParkIcon, R.id.readyDriverIcon, R.id.readyVehicleIcon,
             R.id.relaxButtonIcon, R.id.napButtonIcon, R.id.awakeButtonIcon, R.id.safetyIcon).forEach {
-            findViewById<View>(it).round("#1AF6F6F7", 22f)
+            findViewById<View>(it).round("#1AF6F6F7", 20f)
         }
-        findViewById<View>(R.id.readyNext).round("#E6F6F6F7", 14f)
-        findViewById<View>(R.id.safetyClose).round("#E6F6F6F7", 14f)
-        findViewById<View>(R.id.safetyDetail).round("#1AF6F6F7", 14f)
+        findViewById<View>(R.id.readyNext).round("#F6F6F7", 20f)
+        findViewById<View>(R.id.safetyClose).round("#F6F6F7", 20f)
+        homeStart.round("#F6F6F7", 20f)
+        findViewById<View>(R.id.homeStatusCard).round("#27292E", 20f)
+        findViewById<View>(R.id.homeWeekCard).round("#27292E", 20f)
+        findViewById<View>(R.id.safetyDetail).round("#27292E", 20f)
         show(homeView)
     }
 
@@ -135,12 +147,59 @@ class MainActivity : AppCompatActivity() {
         val onHome = view == homeView
         headerBack.visibility = if (onHome) View.INVISIBLE else View.VISIBLE
         headerClose.visibility = View.VISIBLE        // ✕ 는 어느 화면에서나 보여요
+        if (onHome) updateHome()
     }
 
-    // ‹ 한 화면 뒤로
+    // SAI 홈 화면 채우기: 인사 · 시작 버튼 상태 · 이번 주 리추얼 횟수
+    private fun updateHome() {
+        val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        homeGreeting.text = when (hour) {
+            in 5..10 -> "${driverName}님, 좋은 아침이에요"
+            in 11..17 -> "${driverName}님, 잠시 쉬어 가요"
+            else -> "${driverName}님, 오늘도 수고 많으셨어요"
+        }
+        homeStart.alpha = if (parked == true) 1f else 0.4f     // P가 아니면 흐리게
+        homeWeekText.text = "${thisWeekCount()}회"
+    }
+
+    // 이번 주(월~일)에 리추얼을 끝낸 횟수 (RelaxMode가 저장한 기록)
+    private fun thisWeekCount(): Int {
+        val format = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+        val monday = Calendar.getInstance().apply {
+            firstDayOfWeek = Calendar.MONDAY
+            set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
+        }
+        val week = (0 until 7).map { i ->
+            val day = monday.clone() as Calendar
+            day.add(Calendar.DAY_OF_MONTH, i)
+            format.format(day.time)
+        }
+        val dates = (getSharedPreferences("sai_ritual", MODE_PRIVATE).getString("dates", "") ?: "").split(",")
+        return dates.count { it in week }
+    }
+
+    // 홈의 "SAI 시작하기"
+    private fun startFromHome() {
+        if (parked == true) {
+            readyParkSub.text = "P단 확인 ✓"
+            show(readyView)
+            speak("SAI를 시작할 준비가 됐어요. 원하는 모드를 선택해 주세요.", null)
+        } else {
+            Toast.makeText(this, "기어를 P에 두면 시작할 수 있어요.", Toast.LENGTH_SHORT).show()
+            speak("안전을 위해 기어를 P에 두면 시작할 수 있어요.", null)
+        }
+    }
+
+    // ‹ 한 화면 뒤로 (홈 ← 준비 완료 ← 모드 선택 ← 모드 안의 화면들)
     private fun goBack() {
         when {
-            currentMode != null -> finishMode("리추얼을 종료했어요.")
+            currentMode != null -> {
+                // 모드 안에서 먼저 이전 화면으로. 더 갈 곳이 없으면 모드를 끝내고 "모드 선택"으로
+                if (currentMode?.goBack() != true) {
+                    endMode()
+                    show(modeSelectView)
+                }
+            }
             modeSelectView.visibility == View.VISIBLE -> show(readyView)
             else -> goHome()
         }
@@ -156,21 +215,14 @@ class MainActivity : AppCompatActivity() {
                 endMode()                 // 차량 설정 원래대로
                 finishAffinity()          // 앱 닫기
             }
-            modeSelectView.visibility == View.VISIBLE -> goHome()
-            safetyView.visibility == View.VISIBLE -> goHome()
-            else -> finishAffinity()      // 홈(준비 완료) 화면 → 앱 닫기
+            homeView.visibility == View.VISIBLE -> finishAffinity()   // 홈 화면 → 앱 닫기
+            else -> goHome()              // 준비 완료·모드 선택·안전 중단 → 홈으로
         }
     }
 
-    // 홈으로: 주차(P) 중이면 "준비 완료" 화면, 주행 중이면 첫 화면
-    // (P인 채로 첫 화면에 가면 누를 버튼이 없어서 멈춘 것처럼 보였어요)
+    // 홈으로: 언제나 SAI 홈 화면 (P면 "SAI 시작하기"를 누를 수 있어요)
     private fun goHome() {
-        if (parked == true) {
-            readyParkSub.text = "P단 확인 ✓"
-            show(readyView)
-        } else {
-            show(homeView)
-        }
+        show(homeView)
     }
 
     // ② 모드 시작 / 끝
@@ -222,7 +274,7 @@ class MainActivity : AppCompatActivity() {
             onParked()
         } else {
             statusText.text = "주행 중 (${gear?.name})"
-            adviceText.text = "안전 운전하세요. P에 두면 SAI가 시작돼요."
+            adviceText.text = "안전 운전하세요. 기어를 P에 두면 SAI를 시작할 수 있어요."
             if (currentMode != null) {
                 endMode()                                           // 안전 중단
                 show(safetyView)
@@ -237,9 +289,9 @@ class MainActivity : AppCompatActivity() {
     private fun onParked() {
         statusText.text = "주차됨 (P) · $place"
         if (currentMode != null) return
-        readyParkSub.text = "P단 확인 ✓"
-        show(readyView)
-        speak("SAI를 시작할 준비가 됐어요. 원하는 모드를 선택해 주세요.", null)
+        adviceText.text = "주차를 확인했어요. SAI 시작하기를 눌러 주세요."
+        if (safetyView.visibility == View.VISIBLE || homeView.visibility == View.VISIBLE) show(homeView)
+        speak("주차를 확인했어요. SAI 시작하기를 눌러 주세요.", null)
         updateLocation()
     }
 

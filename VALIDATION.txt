@@ -1,7 +1,0 @@
-검증 결과 (2026-11-13)
-- Kotlin 전체 소스: 컴파일 성공 (exit 0). 실제 Pleos SDK와 AAPT2 생성 R 클래스 사용.
-- Android 리소스: AAPT2 compile/link 성공 (minSdk 28, targetSdk 35).
-- 모드별 JSON 애니메이션: 전용 렌더러의 지원 형식과 일치.
-- Gradle assembleDebug: 데몬 연결 실패로 전체 빌드 미완료.
-- 에뮬레이터 실행/음성/자동 전환/시각적 최종 검증: 미실행.
-- Claude 링크 원본 애니메이션: 접근 불가, 제공 ZIP의 모드별 자산 사용.

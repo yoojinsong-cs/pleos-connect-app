@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <dimen name="sai_type_stage">22sp</dimen>
+    <dimen name="sai_type_title">48sp</dimen>
+    <dimen name="sai_type_guidance">24sp</dimen>
+    <dimen name="sai_type_note">24sp</dimen>
+    <dimen name="sai_type_schedule">24sp</dimen>
+    <dimen name="sai_type_elapsed">28sp</dimen>
+    <dimen name="sai_type_percent">24sp</dimen>
+    <dimen name="sai_type_label">22sp</dimen>
+    <dimen name="sai_type_status">22sp</dimen>
+    <dimen name="sai_type_safety_title">48sp</dimen>
+    <dimen name="sai_type_button">28sp</dimen>
+    <dimen name="sai_visual_min_height">200dp</dimen>
+    <dimen name="sai_outer_margin">28dp</dimen>
+    <dimen name="sai_header_gap">26dp</dimen>
+    <dimen name="sai_footer_bottom">64dp</dimen>
+    <dimen name="sai_corner_radius">20dp</dimen>
+    <dimen name="sai_control_title">28sp</dimen>
+    <dimen name="sai_control_value">22sp</dimen>
+</resources>

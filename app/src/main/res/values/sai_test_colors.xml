@@ -1,0 +1,9 @@
+<resources>
+    <color name="sai_test_bg">#1B1C20</color>
+    <color name="sai_test_white">#F6F6F7</color>
+    <color name="sai_test_accent">#DCC6AB</color>
+    <color name="sai_test_card">#27292E</color>
+    <color name="sai_test_button_bg">#27292E</color>
+    <color name="sai_test_muted">#A6F6F6F7</color>
+    <color name="sai_test_line">#26DCC6AB</color>
+</resources>

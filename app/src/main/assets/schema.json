@@ -1,0 +1,80 @@
+{
+  "packageName": "com.example.hyundaiappproject",
+  "appDescription": "SAI guides wellness routines and saves or updates the next event to announce after awakening.",
+  "invokeWord": "사이",
+  "version": "1.1.0",
+  "actionCalls": [
+    {
+      "type": "function",
+      "function": {
+        "name": "STOP_NAP_ROUTINE",
+        "description": "Ends the running awakening routine and announces the next schedule.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "component": "service"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "SET_NEXT_SCHEDULE",
+        "description": "Saves or updates the next event time or title for announcement after awakening, preserving stored fields when omitted.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "time": {
+              "type": "string",
+              "description": "The requested event start time, in 24-hour HH:mm or a Korean time expression with AM or PM; omit when unchanged."
+            },
+            "title": {
+              "type": "string",
+              "description": "The requested event title; omit when keeping the stored title."
+            }
+          },
+          "required": []
+        },
+        "component": "service"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "CONTROL_AWAKEN_MODE",
+        "description": "Pauses or resumes the running awakening routine.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string",
+              "enum": [
+                "pause",
+                "resume"
+              ],
+              "description": "Whether to pause or resume the awakening routine."
+            }
+          },
+          "required": [
+            "command"
+          ]
+        },
+        "component": "service"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "GET_NEXT_SCHEDULE",
+        "description": "Reads the next event saved in SAI. Use when the user asks to check their next saved schedule. This does not modify it.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "component": "service"
+      }
+    }
+  ]
+}

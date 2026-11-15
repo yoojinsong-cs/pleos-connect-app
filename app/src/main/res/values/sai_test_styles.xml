@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <style name="SaiTestText">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/sai_test_white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="SaiTestButton" parent="android:style/Widget.Material.Button.Borderless">
+        <item name="android:background">@drawable/sai_test_button</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/sai_test_white</item>
+        <item name="android:textSize">@dimen/sai_type_button</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:paddingLeft">18dp</item>
+        <item name="android:paddingRight">18dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <style name="SaiTestSecondary" parent="SaiTestButton">
+        <item name="android:background">@drawable/sai_test_outline</item>
+        <item name="android:textColor">@color/sai_test_white</item>
+    </style>
+    <style name="SaiTestQuiet" parent="SaiTestSecondary">
+        <item name="android:background">@drawable/sai_test_quiet</item>
+        <item name="android:textColor">@color/sai_test_accent</item>
+    </style>
+    <style name="SaiDemoTheme" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:windowBackground">@color/sai_test_bg</item>
+        <item name="android:colorAccent">@color/sai_test_accent</item>
+        <item name="android:statusBarColor">@color/sai_test_bg</item>
+        <item name="android:navigationBarColor">@color/sai_test_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+    <style name="SaiControlTitle" parent="SaiTestText"><item name="android:textSize">@dimen/sai_control_title</item></style>
+    <style name="SaiControlValue" parent="SaiTestText"><item name="android:textSize">@dimen/sai_control_value</item></style>
+</resources>

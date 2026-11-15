@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="@dimen/sai_outer_margin" android:background="@color/sai_test_bg">
+    <ImageView android:layout_width="240dp" android:layout_height="64dp" android:src="@drawable/sai_wordmark" android:scaleType="fitCenter" android:contentDescription="SAI" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="28dp" android:gravity="center" android:text="다음의 나를 준비하는 시간" android:textColor="@color/sai_test_white" android:textSize="@dimen/sai_type_title" />
+    <TextView android:id="@+id/sai_home_notice" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:gravity="center" android:textSize="@dimen/sai_type_guidance" android:textColor="@color/sai_test_accent" android:visibility="gone" />
+    <Button android:id="@+id/sai_home_awaken" android:layout_width="340dp" android:layout_height="80dp" android:layout_marginTop="36dp" android:text="각성 모드" android:textSize="@dimen/sai_type_button" android:textColor="@color/sai_test_white" android:background="@drawable/sai_home_button" android:backgroundTint="@color/sai_test_button_bg" android:textAllCaps="false" android:stateListAnimator="@null" android:elevation="0dp" />
+</LinearLayout>
